@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
             _cameraShaker.ShakeCamera(0.5f,0.1f);
 
             StartCoroutine(HitStun(.1f));
+            _movementComp.ResetJump();
         }
     }
 

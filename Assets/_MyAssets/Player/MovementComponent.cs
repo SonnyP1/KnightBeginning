@@ -105,4 +105,9 @@ public class MovementComponent : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    internal void ResetJump()
+    {
+        jumpCounter = 0;
+    }
 }

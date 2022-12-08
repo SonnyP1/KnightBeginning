@@ -18,8 +18,14 @@ public class EnemySpawner : MonoBehaviour
     {
         while(true)
         {
-            Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y+yGroundSpawn, transform.position.z);
-            Instantiate(Enemies[0],spawnLoc,Quaternion.identity);
+            int randomInt = Random.Range(0, Enemies.Length);
+            float yOffset = 0.0f;
+            if(randomInt != 0 )
+            {
+                yOffset = Random.Range(0.5f, 1f);
+            }
+            Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y+ yGroundSpawn + yOffset, transform.position.z);
+            Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
 
             yield return new WaitForSeconds(Random.Range(0.5f, SpawnRate));
         }
