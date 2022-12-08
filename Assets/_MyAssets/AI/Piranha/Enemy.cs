@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] BoxCollider _boxColliderRef;
     [SerializeField] GameObject BlowUpEffect;
     [SerializeField] float AttackDistance = 1f;
+    [SerializeField] float _movementSpeed;
     CameraShaker _cameraShaker;
     Animator _animator;
     GameObject player;
@@ -16,6 +19,7 @@ public class Enemy : MonoBehaviour
         _cameraShaker = FindObjectOfType<CameraShaker>();
         player = FindObjectOfType<PlayerController>().gameObject;
         _animator = GetComponent<Animator>();
+        transform.parent = null;
     }
     public void Death()
     {
@@ -31,11 +35,17 @@ public class Enemy : MonoBehaviour
         {
             _animator.SetTrigger("AttackTrigger");
         }
+
+        transform.Translate(_movementSpeed * Time.deltaTime, 0, 0);
+        if (transform.position.x < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AttackHitBox()
     {
-        Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position, _boxColliderRef.size / 2, Quaternion.identity, PlayerMask);
+        Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position, _boxColliderRef.bounds.size/2, Quaternion.identity, PlayerMask);
         foreach (Collider col in colliders)
         {
             HealthComp playerHealth = col.gameObject.GetComponent<HealthComp>();
