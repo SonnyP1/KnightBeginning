@@ -62,13 +62,22 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2b2364e-9583-419b-9144-755c7a79bc69"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""eb29078b-d2bc-4217-bd4e-b32b080083bd"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -90,7 +99,7 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""53c0908c-14db-48ae-8e48-17745338053e"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -101,7 +110,7 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""4a8875c0-7754-4dba-94be-192b1f292a31"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -112,6 +121,17 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""85e4f9e7-3d61-4ae2-9819-14771d9836d9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53f49f61-3a4d-4de5-b5c8-0d69abf81204"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -123,11 +143,22 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6f30a86e-8f65-4d7b-9b2c-e6ecf809e872"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""FastFall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c71049cd-8b1e-4ab6-8777-fbec59b0db1a"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -142,6 +173,7 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_FastFall = m_Gameplay.FindAction("FastFall", throwIfNotFound: true);
+        m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +237,7 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_FastFall;
+    private readonly InputAction m_Gameplay_Dash;
     public struct GameplayActions
     {
         private @PlayerInputsAction m_Wrapper;
@@ -213,6 +246,7 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @FastFall => m_Wrapper.m_Gameplay_FastFall;
+        public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -234,6 +268,9 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                 @FastFall.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFastFall;
                 @FastFall.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFastFall;
                 @FastFall.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFastFall;
+                @Dash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -250,6 +287,9 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
                 @FastFall.started += instance.OnFastFall;
                 @FastFall.performed += instance.OnFastFall;
                 @FastFall.canceled += instance.OnFastFall;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -260,5 +300,6 @@ public partial class @PlayerInputsAction : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnFastFall(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

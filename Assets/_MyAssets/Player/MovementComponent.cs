@@ -43,6 +43,14 @@ public class MovementComponent : MonoBehaviour
         tempObj.transform.position = JumpSpawnLocEffect.position;
         tempObj.transform.parent = null;
     }
+
+    internal void Dash()
+    {
+        jumpCounter = 0;
+        _animator.SetTrigger("DashTrigger");
+        moveVelocity.x += 1 * HitPushBack;
+    }
+
     void Update()
     {
         CheckIsGrounded();
@@ -60,6 +68,10 @@ public class MovementComponent : MonoBehaviour
         moveVelocity.x += -1 * HitPushBack;
     }
 
+    public void StopDash()
+    {
+        moveVelocity.x = 0;
+    }
     public void ResetMovement()
     {
         StopAllCoroutines();

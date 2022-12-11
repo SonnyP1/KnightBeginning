@@ -37,6 +37,13 @@ public class PlayerController : MonoBehaviour
 
         _playerInputs.Gameplay.FastFall.performed += FastFall;
         _playerInputs.Gameplay.FastFall.canceled += FastFall;
+
+        _playerInputs.Gameplay.Dash.performed += Dash;
+    }
+
+    private void Dash(InputAction.CallbackContext obj)
+    {
+        _movementComp.Dash();
     }
 
     private void FastFall(InputAction.CallbackContext obj)
