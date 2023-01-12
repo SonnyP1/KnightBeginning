@@ -23,9 +23,15 @@ public class Enemy : MonoBehaviour
     }
     public void Death()
     {
+        UpdateScore();
         GameObject blowUpEffectObj = Instantiate(BlowUpEffect, this.transform);
         blowUpEffectObj.transform.parent = null;
         Destroy(gameObject);
+    }
+
+    private void UpdateScore()
+    {
+        FindObjectOfType<ScoreSystem>().AddScore(1.0f);
     }
 
     private void Update()
