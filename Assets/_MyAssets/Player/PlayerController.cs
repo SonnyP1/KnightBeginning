@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext obj)
     {
-        Debug.Log("ATTCK NOW");
         _animator.SetTrigger("AttackTrigger");
     }
 

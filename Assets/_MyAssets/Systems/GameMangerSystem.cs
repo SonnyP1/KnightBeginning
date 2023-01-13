@@ -6,7 +6,7 @@ public class GameMangerSystem : MonoBehaviour
 {
     public void StopGame()
     {
-        FindObjectOfType<PlayerController>().enabled = false;
+        FindObjectOfType<MovementComponent>().enabled = false;
         StopEnemies();
         StopTrack();
     }
@@ -38,7 +38,9 @@ public class GameMangerSystem : MonoBehaviour
 
     public void ContinueGame()
     {
-        FindObjectOfType<PlayerController>().enabled = true;
+        FindObjectOfType<MovementComponent>().enabled = true;
+
+
         ContinueEnemies();
         ContinueTrack();
     }

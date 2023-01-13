@@ -18,6 +18,7 @@ public class ItemSystem : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
 
+
         bool isDuplicatedItem = false;
         foreach (GameObject itemEquip in itemsEquip)
         {
@@ -38,6 +39,7 @@ public class ItemSystem : MonoBehaviour
             Destroy(newItem);
         }
 
+        newItem.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public void ApplyStats(Item itemToApply)
@@ -45,6 +47,8 @@ public class ItemSystem : MonoBehaviour
         _playerMovementComp.ApplyMovementStat(itemToApply.GetMovementMultiplier());
     }
 
+
+    //DEBUG
     IEnumerator AddItemToTest()
     {
         yield return new WaitForSecondsRealtime(5f);
@@ -53,7 +57,7 @@ public class ItemSystem : MonoBehaviour
             GameObject newItem = Instantiate(itemToTest);
             AddItem(newItem);
             Debug.Log("Added Test Item");
+            StartCoroutine(AddItemToTest());
         }
-        StartCoroutine(AddItemToTest());
     }
 }

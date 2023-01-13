@@ -6,6 +6,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     [SerializeField] AllItems items;
+    [SerializeField] GameObject[] itemHolders;
     Animator _chestAnimator;
     GameMangerSystem _gameManagerSystem;
     private GameObject item1;
@@ -20,19 +21,33 @@ public class Chest : MonoBehaviour
         item1 = allItems[Random.Range(0, allItems.Length)];
         item2 = allItems[Random.Range(0, allItems.Length)];
         item3 = allItems[Random.Range(0, allItems.Length)];
-
-        Debug.Log(item1.GetComponent<Item>().name);
-        Debug.Log(item2.GetComponent<Item>().name);
-        Debug.Log(item3.GetComponent<Item>().name);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGER BY " + other.gameObject.layer);
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             _chestAnimator.SetTrigger("OpenChest");
             _gameManagerSystem.StopGame();
         }
+    }
+
+    public void StartShowingItems()
+    {
+        StartCoroutine(ShowThreeItems());
+    }
+    IEnumerator ShowThreeItems()
+    {
+        itemHolders[0].SetActive(true);
+        yield return new WaitForSecondsRealtime(0.2f);
+        GameObject spawnedItem1 = Instantiate(item1,itemHolders[0].transform);
+
+        itemHolders[1].SetActive(true);
+        yield return new WaitForSecondsRealtime(0.2f);
+        GameObject spawnedItem2 = Instantiate(item2, itemHolders[1].transform);
+
+        itemHolders[2].SetActive(true);
+        yield return new WaitForSecondsRealtime(0.2f);
+        GameObject spawnedItem3 = Instantiate(item3, itemHolders[2].transform);
     }
 }

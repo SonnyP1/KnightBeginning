@@ -8,12 +8,23 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float SpawnRate;
     [SerializeField] float yGroundSpawn;
     [SerializeField] GameObject[] Enemies;
+    [SerializeField] GameObject Chest;
 
+    private float chestTimer;
 
     private void Start()
     {
         StartCoroutine(StartSpawning());
+
+        SpawnChest();
     }
+
+    private void SpawnChest()
+    {
+        Vector3 spawnLoc = new Vector3(transform.position.x, transform.position.y + yGroundSpawn, transform.position.z);
+        Instantiate(Chest, spawnLoc, Quaternion.identity);
+    }
+
     public IEnumerator StartSpawning()
     {
         while(true)
@@ -28,6 +39,17 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
 
             yield return new WaitForSeconds(Random.Range(0.5f, SpawnRate));
+        }
+    }
+
+
+    private void Update()
+    {
+        chestTimer += Time.deltaTime;
+        if(chestTimer > 30f)
+        {
+            SpawnChest();
+            chestTimer = 0f;
         }
     }
 }
