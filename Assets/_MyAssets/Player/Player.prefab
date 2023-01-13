@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 8572895735504006947}
   - component: {fileID: 2250875999127560318}
   - component: {fileID: 8572895735504006941}
+  - component: {fileID: 2507127719880629935}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -278,7 +279,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5966621866309598838, guid: 009d41ed566b98f46a83020862b7e60e, type: 3}
+  m_Sprite: {fileID: -7848039375673857549, guid: 3eb6c24c1f9a7fe49ac47fc974b2a2a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -326,6 +327,7 @@ MonoBehaviour:
   _cameraShaker: {fileID: 0}
   MoveSpeed: 3
   JumpSpeed: 3
+  HitPushBack: 6
   JumpEffect: {fileID: 3138797001614772669, guid: 268a2b4d53c47bf42b5c757a81cd5b03, type: 3}
   JumpSpawnLocEffect: {fileID: 8572895735200677065}
 --- !u!114 &8572895735504006947
@@ -360,6 +362,7 @@ MonoBehaviour:
   deathCam: {fileID: 242658443}
   CurrentHealth: 0
   MaxHealth: 3
+  _postProcessingVolume: {fileID: 0}
 --- !u!95 &8572895735504006941
 Animator:
   serializedVersion: 4
@@ -380,6 +383,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2507127719880629935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572895735504006951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ffcb2b62678bd488a07ff14a62468f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8572895735702285114
 GameObject:
   m_ObjectHideFlags: 0

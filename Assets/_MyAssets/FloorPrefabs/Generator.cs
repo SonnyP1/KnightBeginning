@@ -31,7 +31,7 @@ public class Generator : MonoBehaviour
         StartCoroutine(SpawnNewTrack());
     }
 
-    IEnumerator SpawnNewTrack()
+    public IEnumerator SpawnNewTrack()
     {
         GameObject previousTrack = null;
         while(true)

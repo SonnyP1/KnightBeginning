@@ -9,6 +9,7 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] float GroundSphereRadius = 0.1f;
     [SerializeField] CameraShaker _cameraShaker;
     [SerializeField] float MoveSpeed = 3f;
+    [SerializeField] float SpeedModifier = 1f;
     [SerializeField] float JumpSpeed = 3f;
     [SerializeField] float HitPushBack = 3f;
     [SerializeField] GameObject JumpEffect;
@@ -102,7 +103,7 @@ public class MovementComponent : MonoBehaviour
     public void Move(float x)
     {
         StopAllCoroutines();
-        moveVelocity.x = x * MoveSpeed;
+        moveVelocity.x = x * (MoveSpeed*SpeedModifier);
     }
 
     private void CheckIsGrounded()
@@ -121,5 +122,11 @@ public class MovementComponent : MonoBehaviour
     internal void ResetJump()
     {
         jumpCounter = 0;
+    }
+
+    internal void ApplyMovementStat(float multiplier)
+    {
+        SpeedModifier += multiplier;
+        Debug.Log("Added speed Multiplier");
     }
 }
