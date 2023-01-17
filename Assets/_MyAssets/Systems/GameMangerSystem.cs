@@ -6,11 +6,22 @@ public class GameMangerSystem : MonoBehaviour
 {
     public void StopGame()
     {
-        FindObjectOfType<MovementComponent>().enabled = false;
+        StopPlayer();
         StopEnemies();
         StopTrack();
     }
 
+    private static void StopPlayer()
+    {
+        GameObject player = FindObjectOfType<PlayerController>().gameObject;
+        if (player != null)
+        {
+            player.GetComponent<CharacterController>().enabled = false;
+            player.GetComponent<MovementComponent>().enabled = false;
+            player.GetComponent<PlayerController>().DisableGameplayInputs();
+        }
+
+    }
     private static void StopTrack()
     {
         Generator gameGenerator = FindObjectOfType<Generator>();
@@ -35,16 +46,23 @@ public class GameMangerSystem : MonoBehaviour
         }
     }
 
-
     public void ContinueGame()
     {
-        FindObjectOfType<MovementComponent>().enabled = true;
-
-
+        ContinuePlayer();
         ContinueEnemies();
         ContinueTrack();
     }
 
+    private static void ContinuePlayer()
+    {
+        GameObject player = FindObjectOfType<PlayerController>().gameObject;
+        if (player != null)
+        {
+            player.GetComponent<CharacterController>().enabled = true;
+            player.GetComponent<MovementComponent>().enabled = true;
+            player.GetComponent<PlayerController>().EnabledGameplayInputs();
+        }
+    }
     private static void ContinueTrack()
     {
         Generator gameGenerator = FindObjectOfType<Generator>();

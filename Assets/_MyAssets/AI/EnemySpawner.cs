@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnChest()
     {
-        Vector3 spawnLoc = new Vector3(transform.position.x, transform.position.y + yGroundSpawn, transform.position.z);
+        Vector3 spawnLoc = new Vector3(transform.position.x, -0.8f, transform.position.z);
         Instantiate(Chest, spawnLoc, Quaternion.identity);
     }
 

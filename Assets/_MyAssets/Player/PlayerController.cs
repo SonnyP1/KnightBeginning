@@ -17,6 +17,15 @@ public class PlayerController : MonoBehaviour
     {
         _playerInputs.Disable();
     }
+
+    public void DisableGameplayInputs()
+    {
+        _playerInputs.Gameplay.Disable();
+    }
+    public void EnabledGameplayInputs()
+    {
+        _playerInputs.Gameplay.Enable();
+    }
     void Start()
     {
         _movementComp = GetComponent<MovementComponent>();
