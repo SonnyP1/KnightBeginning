@@ -38,6 +38,7 @@ public class GameMangerSystem : MonoBehaviour
     private void StopEnemies()
     {
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.isPause = true;
         enemySpawner.StopAllCoroutines();
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in allEnemies)
@@ -80,6 +81,7 @@ public class GameMangerSystem : MonoBehaviour
     private static void ContinueEnemies()
     {
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.isPause = false;
         enemySpawner.StartCoroutine(enemySpawner.StartSpawning());
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in allEnemies)

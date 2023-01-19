@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2543509557643983924
+--- !u!1001 &893014307824998343
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -93,20 +93,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436306315586293198, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: m_Name
-      value: BootsOfSpeed
+      value: Health
       objectReference: {fileID: 0}
     - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2494711539355051569}
+      objectReference: {fileID: 2189495306798737276}
     - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2494711539355051569}
+      objectReference: {fileID: 2189495306798737276}
     - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2494711539355051569}
+      objectReference: {fileID: 2189495306798737276}
     - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowNameAndDescription
@@ -119,25 +119,25 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ItemSelected
       objectReference: {fileID: 0}
+    - target: {fileID: 5472227146180830146, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 9dd92b2e433c1184ca8b58438ceaf538, type: 3}
     - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: itemId
-      value: BootOfSpeed
+      value: Health Container
       objectReference: {fileID: 0}
     - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: itemDes
-      value: Add 10% Movement Speed
-      objectReference: {fileID: 0}
-    - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-      propertyPath: movementMultiplier
-      value: 0.1
+      value: Add 1 Health Container
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
---- !u!114 &821962629124047891 stripped
+--- !u!114 &1371193271728056036 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2892558702688860199, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-  m_PrefabInstance: {fileID: 2543509557643983924}
+  m_CorrespondingSourceObject: {fileID: 2261909600074838307, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_PrefabInstance: {fileID: 893014307824998343}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -145,45 +145,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2223847348691923450 stripped
+--- !u!114 &2612352871823044576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2892558702688860199, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_PrefabInstance: {fileID: 893014307824998343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3599628304045824521 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4436306315586293198, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-  m_PrefabInstance: {fileID: 2543509557643983924}
+  m_PrefabInstance: {fileID: 893014307824998343}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2494711539355051569
+--- !u!114 &2189495306798737276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223847348691923450}
+  m_GameObject: {fileID: 3599628304045824521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8581be892e423cf48ba51cb48618b2fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 617e5892158e93a4a8c9ca84e7537b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: Boots Of Speed
-  itemDes: Add 10% speed
-  isStackable: 1
-  StackUI: {fileID: 821962629124047891}
-  NameTxt: {fileID: 6736967337266633746}
-  ItemDesTxt: {fileID: 4336885882078334231}
-  SpeedMultiplier: 0.1
---- !u!114 &4336885882078334231 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2261909600074838307, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-  m_PrefabInstance: {fileID: 2543509557643983924}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6736967337266633746 stripped
+  itemId: Health Container
+  itemDes: Add one health
+  StackUI: {fileID: 2612352871823044576}
+  NameTxt: {fileID: 8238851346850248673}
+  ItemDesTxt: {fileID: 1371193271728056036}
+  healthToHeal: 1
+--- !u!114 &8238851346850248673 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9093568565025562662, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-  m_PrefabInstance: {fileID: 2543509557643983924}
+  m_PrefabInstance: {fileID: 893014307824998343}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

@@ -437,6 +437,7 @@ RectTransform:
   m_Children:
   - {fileID: 422160914}
   - {fileID: 2142600328}
+  - {fileID: 1884347060}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -495,6 +496,7 @@ MonoBehaviour:
   - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}
   - {fileID: 1600643447417531737, guid: 08974380201b2884282e1d0b3f1fa8de, type: 3}
   Chest: {fileID: 537777524644479167, guid: a475c3e721785d046b1829d88cef774b, type: 3}
+  isPause: 0
 --- !u!1 &634316539
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,8 +724,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59f11f492bbe504281c941cef9e6fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreText: {fileID: 1627631994}
+  heartUIObj: {fileID: 8071857638510096600, guid: 006f4ba4ec9fd4b40934c6bc1dde9f0a, type: 3}
+  healthGridUI: {fileID: 1884347059}
   _panel: {fileID: 2142600327}
+  _scoreText: {fileID: 1627631994}
 --- !u!114 &768650167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1337,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627631992}
   m_CullTransparentMesh: 1
+--- !u!1 &1884347059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884347060}
+  - component: {fileID: 1884347061}
+  m_Layer: 5
+  m_Name: HealthGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1884347060
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884347059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 464392474}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 98.2, y: 100}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1884347061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884347059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 2
+  m_StartCorner: 1
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 1
+  m_ConstraintCount: 5
 --- !u!1 &2117325220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1460,7 @@ GameObject:
   - component: {fileID: 2142600330}
   - component: {fileID: 2142600329}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ItemPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1496,15 +1561,11 @@ PrefabInstance:
       propertyPath: _postProcessingVolume
       value: 
       objectReference: {fileID: 977315159}
-    - target: {fileID: 2507127719880629935, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
-      propertyPath: itemToTest
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8572895735504006946, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
+    - target: {fileID: 3251932907436329850, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
       propertyPath: _cameraShaker
       value: 
       objectReference: {fileID: 963194229}
-    - target: {fileID: 8572895735504006947, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
+    - target: {fileID: 8572895735504006946, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
       propertyPath: _cameraShaker
       value: 
       objectReference: {fileID: 963194229}

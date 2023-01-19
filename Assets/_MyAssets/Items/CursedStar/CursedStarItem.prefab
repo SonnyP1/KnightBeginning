@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &893014307824998343
+--- !u!1001 &7181927180681589983
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -93,19 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436306315586293198, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
       propertyPath: m_Name
-      value: Health
-      objectReference: {fileID: 0}
-    - target: {fileID: 5472227146180830146, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 9dd92b2e433c1184ca8b58438ceaf538, type: 3}
-    - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-      propertyPath: itemId
-      value: Health Container
-      objectReference: {fileID: 0}
-    - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
-      propertyPath: itemDes
-      value: Add 1 Health Container
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}

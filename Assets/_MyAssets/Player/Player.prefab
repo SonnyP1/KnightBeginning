@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 8572895735504006946}
   - component: {fileID: 8572895735504006947}
   - component: {fileID: 2250875999127560318}
+  - component: {fileID: 3251932907436329850}
   - component: {fileID: 8572895735504006941}
   - component: {fileID: 2507127719880629935}
   m_Layer: 6
@@ -326,6 +327,7 @@ MonoBehaviour:
   GroundSphereRadius: 0.2
   _cameraShaker: {fileID: 0}
   MoveSpeed: 3
+  SpeedModifier: 1
   JumpSpeed: 3
   HitPushBack: 6
   JumpEffect: {fileID: 3138797001614772669, guid: 268a2b4d53c47bf42b5c757a81cd5b03, type: 3}
@@ -342,11 +344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c6e57385de7bc428696ef9452e3193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraShaker: {fileID: 0}
-  _boxColliderRef: {fileID: 8572895735702285108}
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &2250875999127560318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +360,23 @@ MonoBehaviour:
   CurrentHealth: 0
   MaxHealth: 3
   _postProcessingVolume: {fileID: 0}
+--- !u!114 &3251932907436329850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572895735504006951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e7d0a14b5a31b42b19a1b52ffd8bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraShaker: {fileID: 0}
+  _boxColliderRef: {fileID: 8572895735702285108}
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!95 &8572895735504006941
 Animator:
   serializedVersion: 4
@@ -395,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ffcb2b62678bd488a07ff14a62468f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemToTest: {fileID: 0}
 --- !u!1 &8572895735702285114
 GameObject:
   m_ObjectHideFlags: 0

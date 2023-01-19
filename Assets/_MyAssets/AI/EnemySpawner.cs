@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float yGroundSpawn;
     [SerializeField] GameObject[] Enemies;
     [SerializeField] GameObject Chest;
+    public bool isPause = false;
 
     private float chestTimer;
 
@@ -42,14 +43,16 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
-        chestTimer += Time.deltaTime;
-        if(chestTimer > 30f)
+        if(!isPause)
         {
-            SpawnChest();
-            chestTimer = 0f;
+            chestTimer += Time.deltaTime;
+            if(chestTimer > 5f)
+            {
+                SpawnChest();
+                chestTimer = 0f;
+            }
         }
     }
 }

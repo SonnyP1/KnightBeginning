@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Runtime.InteropServices.WindowsRuntime;
+
 public class Item : MonoBehaviour
 {
     [Header("Information")]
     [SerializeField] string itemId;
     [SerializeField] string itemDes;
+    [SerializeField] bool isStackable;
 
-    [Header("Stats")]
-    [SerializeField] float movementMultiplier;
 
     [Header("UI")]
     int currentStack = 1;
@@ -19,19 +20,19 @@ public class Item : MonoBehaviour
     [SerializeField] TextMeshProUGUI ItemDesTxt;
 
     private bool inInventory = false;
+    public GameObject GetPlayerObj() { return _player; }
+    private GameObject _player;
 
     private void Start()
     {
+        _player = FindObjectOfType<PlayerController>().gameObject;
+
+
         NameTxt.enabled = false;
         ItemDesTxt.enabled = false;
 
         NameTxt.text = itemId;
         ItemDesTxt.text = itemDes;
-    }
-
-    public float GetMovementMultiplier()
-    {
-        return movementMultiplier;
     }
 
     public virtual void ItemActivation()
@@ -64,12 +65,18 @@ public class Item : MonoBehaviour
             //Gets the ChestGameObject
             GameObject parentObject = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.gameObject.transform.parent.gameObject;
             transform.parent = null;
-            Destroy(parentObject);
 
-            FindObjectOfType<ItemSystem>().AddItem(gameObject);
-            inInventory = true;
-
+            ItemActivation();
             FindObjectOfType<GameMangerSystem>().ContinueGame();
+            if(isStackable)
+            {
+                FindObjectOfType<ItemSystem>().AddItem(gameObject);
+                inInventory = true;
+            }
+
+
+
+            Destroy(parentObject);
         }
     }
 }

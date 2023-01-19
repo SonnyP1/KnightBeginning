@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering.PostProcessing;
+using System;
 
 public class HealthComp : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HealthComp : MonoBehaviour
     [SerializeField] float CurrentHealth;
     [SerializeField] float MaxHealth;
     [SerializeField] PostProcessVolume _postProcessingVolume;
+    private InGameUISystem _inGameUISystem;
     private ChromaticAberration _cA;
     Animator _animator;
     MovementComponent _movementComponent;
@@ -22,20 +24,29 @@ public class HealthComp : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _movementComponent = GetComponent<MovementComponent>();
+        _inGameUISystem = FindObjectOfType<InGameUISystem>();
+
         CurrentHealth = MaxHealth;
+        _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
     }
     public void Hit()
     {
         _animator.SetTrigger("HitTrigger");
-        CurrentHealth = Mathf.Clamp(CurrentHealth-1 ,0,MaxHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth-1 ,0, CurrentHealth);
         _movementComponent.PushBackHit();
         StartCoroutine(ApplyChromaticAberration(.2f,1f));
         if (CurrentHealth <= 0)
         {
             Death();
         }
+        _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
     }
 
+    public void Heal(int heal)
+    {
+        CurrentHealth += heal;
+        _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
+    }
     void Death()
     {
         StartCoroutine(DeathStun(5f));

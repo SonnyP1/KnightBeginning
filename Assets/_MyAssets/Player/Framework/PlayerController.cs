@@ -6,9 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] CameraShaker _cameraShaker;
-    [SerializeField] BoxCollider _boxColliderRef;
-    [SerializeField] LayerMask EnemyLayerMask;
     PlayerInputsAction _playerInputs;
     MovementComponent _movementComp;
     Animator _animator;
@@ -39,7 +36,7 @@ public class PlayerController : MonoBehaviour
         _playerInputs.Enable();
 
         _playerInputs.Gameplay.Jump.performed += Jump;
-        _playerInputs.Gameplay.Attack.performed += Attack;
+        _playerInputs.Gameplay.Attack.performed += AttackPressed;
 
         _playerInputs.Gameplay.Move.performed += Move;
         _playerInputs.Gameplay.Move.canceled += Move;
@@ -65,7 +62,7 @@ public class PlayerController : MonoBehaviour
         _movementComp.Move(obj.ReadValue<float>());
     }
 
-    private void Attack(InputAction.CallbackContext obj)
+    private void AttackPressed(InputAction.CallbackContext obj)
     {
         _animator.SetTrigger("AttackTrigger");
     }
@@ -73,25 +70,5 @@ public class PlayerController : MonoBehaviour
     private void Jump(InputAction.CallbackContext obj)
     {
         _movementComp.Jump();
-    }
-
-    public void AttackHitBox()
-    {
-        Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position,_boxColliderRef.size/2,Quaternion.identity,EnemyLayerMask);
-        foreach(Collider col in colliders)
-        {
-            col.GetComponent<Enemy>().Death();
-            _cameraShaker.ShakeCamera(0.5f,0.1f);
-
-            StartCoroutine(HitStun(.1f));
-            _movementComp.ResetJump();
-        }
-    }
-
-    IEnumerator HitStun(float duration)
-    {
-        Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
     }
 }

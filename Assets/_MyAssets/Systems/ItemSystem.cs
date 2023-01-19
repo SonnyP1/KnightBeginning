@@ -17,8 +17,6 @@ public class ItemSystem : MonoBehaviour
     }
     public void AddItem(GameObject newItem)
     {
-
-
         bool isDuplicatedItem = false;
         foreach (GameObject itemEquip in itemsEquip)
         {
@@ -28,7 +26,6 @@ public class ItemSystem : MonoBehaviour
             }
         }
         _gameUISystem.UpdateItemList(newItem, isDuplicatedItem);
-        ApplyStats(newItem.GetComponent<Item>());
 
         if(!isDuplicatedItem)
         {
@@ -40,11 +37,6 @@ public class ItemSystem : MonoBehaviour
         }
 
         newItem.transform.localScale = new Vector3(1, 1, 1);
-    }
-
-    public void ApplyStats(Item itemToApply)
-    {
-        _playerMovementComp.ApplyMovementStat(itemToApply.GetMovementMultiplier());
     }
 
 
