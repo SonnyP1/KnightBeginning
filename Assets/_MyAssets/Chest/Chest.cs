@@ -30,6 +30,11 @@ public class Chest : MonoBehaviour
             _chestAnimator.SetTrigger("OpenChest");
             _gameManagerSystem.StopGame();
         }
+
+        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 
     public void StartShowingItems()

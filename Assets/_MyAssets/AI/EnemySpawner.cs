@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
         {
             int randomInt = Random.Range(0, Enemies.Length);
             float yOffset = 0.0f;
-            if(randomInt != 0 )
+            if(!Enemies[randomInt].GetComponent<Enemy>().IsGroundedEnemy())
             {
                 yOffset = Random.Range(0.5f, 1f);
             }

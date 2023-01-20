@@ -495,6 +495,7 @@ MonoBehaviour:
   Enemies:
   - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}
   - {fileID: 1600643447417531737, guid: 08974380201b2884282e1d0b3f1fa8de, type: 3}
+  - {fileID: 2779798844894269894, guid: 9a00b73981208864c956cba76b67d824, type: 3}
   Chest: {fileID: 537777524644479167, guid: a475c3e721785d046b1829d88cef774b, type: 3}
   isPause: 0
 --- !u!1 &634316539
@@ -960,7 +961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.019, y: -0.76600003, z: 1.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1371,7 +1372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 98.2, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1884347061

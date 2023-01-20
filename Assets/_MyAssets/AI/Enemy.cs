@@ -11,6 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject BlowUpEffect;
     [SerializeField] float AttackDistance = 1f;
     [SerializeField] float _movementSpeed;
+
+    [Header("Bool")]
+    [SerializeField] bool hasTriggerBox;
+    [SerializeField] bool isGroundedEnemy;
+    public bool IsGroundedEnemy() {return isGroundedEnemy;}
+
     CameraShaker _cameraShaker;
     Animator _animator;
     GameObject player;
@@ -37,7 +43,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         float distanceFromPlayer = Vector3.Distance(transform.position,player.transform.position);
-        if(distanceFromPlayer < AttackDistance)
+        if(distanceFromPlayer < AttackDistance && _animator != null)
         {
             _animator.SetTrigger("AttackTrigger");
         }
@@ -71,5 +77,22 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(hasTriggerBox)
+        {
+            if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                HealthComp playerHealth = other.gameObject.GetComponent<HealthComp>();
+                playerHealth.Hit();
+                _cameraShaker.ShakeCamera(1f, 0.1f);
+                if (playerHealth.GetCurrentHealth() > 0)
+                {
+                    StartCoroutine(HitStun(.2f));
+                }
+            }
+        }
     }
 }
