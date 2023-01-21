@@ -127,6 +127,9 @@ MonoBehaviour:
   BlowUpEffect: {fileID: 6836888543163375580, guid: 02986f4211cba104ba14a4515cd14af4, type: 3}
   AttackDistance: 2
   _movementSpeed: -1.5
+  hasTriggerBox: 0
+  isGroundedEnemy: 0
+  canBeKilled: 1
 --- !u!65 &1600643447417531746
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -55,6 +55,7 @@ MonoBehaviour:
   _movementSpeed: -1.5
   hasTriggerBox: 1
   isGroundedEnemy: 1
+  canBeKilled: 0
 --- !u!65 &1902299867508152306
 BoxCollider:
   m_ObjectHideFlags: 0

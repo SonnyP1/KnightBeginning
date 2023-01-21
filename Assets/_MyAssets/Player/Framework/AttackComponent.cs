@@ -7,9 +7,12 @@ public class AttackComponent : MonoBehaviour
     [SerializeField] CameraShaker _cameraShaker;
     [SerializeField] BoxCollider _boxColliderRef;
     [SerializeField] LayerMask EnemyLayerMask;
+    [SerializeField] float AttackCooldownTime = 0.2f;
+    bool isCooldownActive = false;
+    Animator _animator;
     void Start()
     {
-
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -18,7 +21,14 @@ public class AttackComponent : MonoBehaviour
 
     }
 
-
+    public void StartAttack()
+    {
+        if(!isCooldownActive)
+        {
+            _animator.SetTrigger("AttackTrigger");
+            StartCoroutine(AttackCooldown());
+        }
+    }
     public virtual void Attack()
     {
         Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position, _boxColliderRef.size / 2, Quaternion.identity, EnemyLayerMask);
@@ -30,6 +40,13 @@ public class AttackComponent : MonoBehaviour
             StartCoroutine(HitStun(.1f));
             GetComponent<MovementComponent>().ResetJump();
         }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        isCooldownActive = true;
+        yield return new WaitForSeconds(AttackCooldownTime);
+        isCooldownActive = false;
     }
 
     IEnumerator HitStun(float duration)

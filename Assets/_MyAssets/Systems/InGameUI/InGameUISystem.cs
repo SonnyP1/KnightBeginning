@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class InGameUISystem : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class InGameUISystem : MonoBehaviour
         }
     }
 
+    internal void RemoveItemUI(GameObject itemToRemove)
+    {
+        items.Remove(itemToRemove);
+    }
+
     public void UpdateItemList(GameObject newItem, bool isDuplicated)
     {
         if(isDuplicated)
@@ -62,7 +68,7 @@ public class InGameUISystem : MonoBehaviour
             {
                 if(item.GetComponent<Item>().name == newItem.GetComponent<Item>().name)
                 {
-                    item.GetComponent<Item>().UpdateStackUI(1);
+                    item.GetComponent<Item>().AddItemStack(1);
                 }
             }
         }

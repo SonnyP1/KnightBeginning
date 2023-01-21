@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     PlayerInputsAction _playerInputs;
     MovementComponent _movementComp;
-    Animator _animator;
+    AttackComponent _attackComp;
 
     private void OnDisable()
     {
@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        _attackComp = GetComponent<AttackComponent>();
         _movementComp = GetComponent<MovementComponent>();
-        _animator = GetComponent<Animator>();
         _playerInputs = new PlayerInputsAction();
         SetUpInputs();
     }
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void AttackPressed(InputAction.CallbackContext obj)
     {
-        _animator.SetTrigger("AttackTrigger");
+        _attackComp.StartAttack();
     }
 
     private void Jump(InputAction.CallbackContext obj)

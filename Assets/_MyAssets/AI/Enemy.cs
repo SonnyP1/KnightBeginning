@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("Bool")]
     [SerializeField] bool hasTriggerBox;
     [SerializeField] bool isGroundedEnemy;
+    [SerializeField] bool canBeKilled;
     public bool IsGroundedEnemy() {return isGroundedEnemy;}
 
     CameraShaker _cameraShaker;
@@ -29,10 +30,13 @@ public class Enemy : MonoBehaviour
     }
     public void Death()
     {
-        UpdateScore();
-        GameObject blowUpEffectObj = Instantiate(BlowUpEffect, this.transform);
-        blowUpEffectObj.transform.parent = null;
-        Destroy(gameObject);
+        if(canBeKilled)
+        {
+            UpdateScore();
+            GameObject blowUpEffectObj = Instantiate(BlowUpEffect, this.transform);
+            blowUpEffectObj.transform.parent = null;
+            Destroy(gameObject);
+        }
     }
 
     private void UpdateScore()
@@ -63,7 +67,7 @@ public class Enemy : MonoBehaviour
             HealthComp playerHealth = col.gameObject.GetComponent<HealthComp>();
             if(playerHealth.GetCurrentHealth() > 0)
             {
-                playerHealth.Hit();
+                playerHealth.Hit(1,true);
                 _cameraShaker.ShakeCamera(1f, 0.1f);
                 if(playerHealth.GetCurrentHealth() > 0)
                 {
@@ -86,7 +90,7 @@ public class Enemy : MonoBehaviour
             if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 HealthComp playerHealth = other.gameObject.GetComponent<HealthComp>();
-                playerHealth.Hit();
+                playerHealth.Hit(1,true);
                 _cameraShaker.ShakeCamera(1f, 0.1f);
                 if (playerHealth.GetCurrentHealth() > 0)
                 {

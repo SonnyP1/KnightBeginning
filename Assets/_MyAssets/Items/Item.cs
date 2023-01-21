@@ -15,6 +15,8 @@ public class Item : MonoBehaviour
 
     [Header("UI")]
     int currentStack = 1;
+    public int GetCurrentStack() { return currentStack; }
+
     [SerializeField] TextMeshProUGUI StackUI;
     [SerializeField] TextMeshProUGUI NameTxt;
     [SerializeField] TextMeshProUGUI ItemDesTxt;
@@ -40,9 +42,13 @@ public class Item : MonoBehaviour
 
     }
 
-    internal void UpdateStackUI(int val)
+    internal void AddItemStack(int val)
     {
         currentStack += val;
+        UpdateStackUI();
+    }
+    internal void UpdateStackUI()
+    {
         StackUI.text = currentStack.ToString() + "x";
     }
 

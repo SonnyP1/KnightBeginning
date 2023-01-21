@@ -16,6 +16,9 @@ public class HealthComp : MonoBehaviour
     private ChromaticAberration _cA;
     Animator _animator;
     MovementComponent _movementComponent;
+    internal bool canTakeDmg = true;
+    private bool isDead = false;
+
     public float GetCurrentHealth()
     {
         return CurrentHealth;
@@ -29,17 +32,23 @@ public class HealthComp : MonoBehaviour
         CurrentHealth = MaxHealth;
         _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
     }
-    public void Hit()
+    public void Hit(int dmg, bool isDeathBlow)
     {
-        _animator.SetTrigger("HitTrigger");
-        CurrentHealth = Mathf.Clamp(CurrentHealth-1 ,0, CurrentHealth);
-        _movementComponent.PushBackHit();
-        StartCoroutine(ApplyChromaticAberration(.2f,1f));
-        if (CurrentHealth <= 0)
+        if(canTakeDmg)
         {
-            Death();
+            _animator.SetTrigger("HitTrigger");
+            CurrentHealth = Mathf.Clamp(CurrentHealth-dmg ,0, CurrentHealth);
+            _movementComponent.PushBackHit();
+            StartCoroutine(ApplyChromaticAberration(.2f,1f));
+            if (CurrentHealth <= 0 && isDeathBlow)
+            {
+                if(!isDead)
+                {
+                    Death();
+                }
+            }
+            _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
         }
-        _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
     }
 
     public void Heal(int heal)
@@ -49,6 +58,7 @@ public class HealthComp : MonoBehaviour
     }
     void Death()
     {
+        isDead = true;
         StartCoroutine(DeathStun(5f));
         GetComponent<PlayerController>().enabled = false;
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();

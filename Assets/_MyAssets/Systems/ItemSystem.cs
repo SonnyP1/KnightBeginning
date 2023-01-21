@@ -39,6 +39,12 @@ public class ItemSystem : MonoBehaviour
         newItem.transform.localScale = new Vector3(1, 1, 1);
     }
 
+    public void RemoveItem(GameObject itemToRemove)
+    {
+        itemsEquip.Remove(itemToRemove);
+        _gameUISystem.RemoveItemUI(itemToRemove);
+    }
+
 
     //DEBUG
     IEnumerator AddItemToTest()
