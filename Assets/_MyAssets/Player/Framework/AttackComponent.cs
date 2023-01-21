@@ -39,9 +39,18 @@ public class AttackComponent : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position, _boxColliderRef.size / 2, Quaternion.identity, EnemyLayerMask);
         foreach (Collider col in colliders)
         {
-            col.GetComponent<Enemy>().Death();
-            _cameraShaker.ShakeCamera(0.5f, 0.1f);
+            if (col.GetComponent<Enemy>())
+            {
+                col.GetComponent<Enemy>().Death();
 
+            }
+            else if(col.GetComponent<Boss>())
+            {
+                col.GetComponent<Boss>().Hit();
+            }
+
+
+            _cameraShaker.ShakeCamera(0.5f, 0.1f);
             StartCoroutine(HitStun(.1f));
             GetComponent<MovementComponent>().ResetJump();
         }

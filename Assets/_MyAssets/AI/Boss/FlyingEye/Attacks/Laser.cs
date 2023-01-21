@@ -16,27 +16,40 @@ public class Laser : MonoBehaviour
 
     IEnumerator StartLaserAttack()
     {
+        Color tmpColor = _laserSpriteRender.color;
+        tmpColor.a = 0;
+        _laserSpriteRender.color = tmpColor;
 
-        yield return new WaitForSeconds(_laserTimer/4);
-        _laserSpriteRender.color = new Color(255,255,255,100);    
+        yield return new WaitForSeconds(_laserTimer/5);
+        _laserSpriteRender.color = Color.white;
 
-        yield return new WaitForSeconds(_laserTimer/4);
-        _laserSpriteRender.color = new Color(255,255,255,255);    
+        yield return new WaitForSeconds(_laserTimer/5);
+        _laserSpriteRender.color = tmpColor;
         
 
-        yield return new WaitForSeconds(_laserTimer/4);
-        _laserSpriteRender.color = new Color(255,255,255,100);    
+        yield return new WaitForSeconds(_laserTimer/5);
+        _laserSpriteRender.color = Color.white;    
 
-        yield return new WaitForSeconds(_laserTimer/4);
-        _laserSpriteRender.color = new Color(255,255,255,255);    
+        yield return new WaitForSeconds(_laserTimer/5);
+        _laserSpriteRender.color = tmpColor;        
+        
+        yield return new WaitForSeconds(_laserTimer/5);
+        _laserSpriteRender.color = Color.white;
+    
 
         //Do Overlap here
         SpawnHitBox();
+
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     void SpawnHitBox()
     {
-        Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position, _boxColliderRef.bounds.size / 2, Quaternion.identity, _playerMask);
+        Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position + _boxColliderRef.center,
+            _boxColliderRef.size, 
+            transform.rotation, _playerMask);
+
         foreach (Collider col in colliders)
         {
             HealthComp playerHealth = col.gameObject.GetComponent<HealthComp>();
@@ -50,7 +63,6 @@ public class Laser : MonoBehaviour
                 }
             }
         }
-        Destroy(gameObject);
     }
 
     IEnumerator HitStun(float duration)
