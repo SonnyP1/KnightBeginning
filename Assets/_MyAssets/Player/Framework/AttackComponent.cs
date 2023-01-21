@@ -8,8 +8,10 @@ public class AttackComponent : MonoBehaviour
     [SerializeField] BoxCollider _boxColliderRef;
     [SerializeField] LayerMask EnemyLayerMask;
     [SerializeField] float AttackCooldownTime = 0.2f;
-    bool isCooldownActive = false;
+    private bool isCooldownActive = false;
     Animator _animator;
+    public void AddAttackMultiplier(float val) { _attackMultiplier = Mathf.Clamp(_attackMultiplier+val,0, float.MaxValue); }
+    public float _attackMultiplier = 1.0f;
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -45,7 +47,7 @@ public class AttackComponent : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         isCooldownActive = true;
-        yield return new WaitForSeconds(AttackCooldownTime);
+        yield return new WaitForSeconds(AttackCooldownTime * _attackMultiplier);
         isCooldownActive = false;
     }
 
