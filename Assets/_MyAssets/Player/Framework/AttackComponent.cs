@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackComponent : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class AttackComponent : MonoBehaviour
     [SerializeField] BoxCollider _boxColliderRef;
     [SerializeField] LayerMask EnemyLayerMask;
     [SerializeField] float AttackCooldownTime = 0.2f;
+    [SerializeField] Image AttackCooldownImage;
     private bool isCooldownActive = false;
     Animator _animator;
     public void AddAttackMultiplier(float val) { _attackMultiplier = Mathf.Clamp(_attackMultiplier+val,0, float.MaxValue); }
@@ -15,6 +17,7 @@ public class AttackComponent : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        AttackCooldownImage.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -47,7 +50,18 @@ public class AttackComponent : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         isCooldownActive = true;
-        yield return new WaitForSeconds(AttackCooldownTime * _attackMultiplier);
+        float cooldownTime = AttackCooldownTime * _attackMultiplier;
+        float time = 0.0f;
+        while(time < cooldownTime)
+        {
+            time += Time.deltaTime;
+            float percentage = time / cooldownTime;
+            AttackCooldownImage.fillAmount = percentage;
+            yield return new WaitForEndOfFrame();
+        }
+
+
+        AttackCooldownImage.fillAmount = 1;
         isCooldownActive = false;
     }
 

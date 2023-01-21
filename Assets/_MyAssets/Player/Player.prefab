@@ -377,6 +377,9 @@ MonoBehaviour:
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  AttackCooldownTime: 0.2
+  AttackCooldownImage: {fileID: 0}
+  _attackMultiplier: 1
 --- !u!95 &8572895735504006941
 Animator:
   serializedVersion: 4
