@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Range(0.5f,5f)]
+    [Range(0.5f, 5f)]
     [SerializeField] float SpawnRate;
+    [SerializeField] float bossSpawnTime;
+
     [SerializeField] float yGroundSpawn;
     [SerializeField] GameObject[] Enemies;
+    [SerializeField] GameObject[] Bosses;
     [SerializeField] GameObject Chest;
     public bool isPause = false;
 
     private float chestTimer;
+    private float bossTimer;
 
     private void Start()
     {
         StartCoroutine(StartSpawning());
-
         SpawnChest();
     }
 
@@ -43,6 +46,14 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    void SpawnBoss()
+    {
+        float yOffset = Random.Range(0.5f, 1f);
+        Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y+ yGroundSpawn + yOffset, transform.position.z);
+        int randomInt = Random.Range(0, Bosses.Length);
+        Instantiate(Bosses[randomInt],spawnLoc,Quaternion.identity);
+    }
+
     private void Update()
     {
         if(!isPause)
@@ -52,6 +63,14 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnChest();
                 chestTimer = 0f;
+            }
+
+            bossTimer += Time.deltaTime;
+
+            if(bossTimer > bossSpawnTime)
+            {
+                SpawnBoss();
+                bossTimer = 0f;
             }
         }
     }

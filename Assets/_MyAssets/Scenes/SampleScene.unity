@@ -493,11 +493,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnRate: 3
+  bossSpawnTime: 3
   yGroundSpawn: 0.4
   Enemies:
   - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}
   - {fileID: 1600643447417531737, guid: 08974380201b2884282e1d0b3f1fa8de, type: 3}
   - {fileID: 2779798844894269894, guid: 9a00b73981208864c956cba76b67d824, type: 3}
+  Bosses:
+  - {fileID: 6932764118351674846, guid: 311e915bf5438684ab1643962c7993df, type: 3}
   Chest: {fileID: 537777524644479167, guid: a475c3e721785d046b1829d88cef774b, type: 3}
   isPause: 0
 --- !u!1 &634316539
@@ -1705,87 +1708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142600327}
   m_CullTransparentMesh: 1
---- !u!1001 &5364128025380544934
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5364128025380544936, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: _explosionObj
-      value: 
-      objectReference: {fileID: 6836888543163375580, guid: cc31128ff7dc6a54d8ec0eafa4e8da81, type: 3}
-    - target: {fileID: 5364128025380544936, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: BossStartLoc.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5364128025380544936, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: BossStartLoc.z
-      value: 2.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5364128025380544936, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: _timeToStartBoss
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.282
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6753040604304620564, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932764118351674846, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_Name
-      value: Eye_of_Cthulhu_Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 7912788212443777147, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7912788212443777147, guid: 311e915bf5438684ab1643962c7993df, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 311e915bf5438684ab1643962c7993df, type: 3}
 --- !u!1001 &8572895736420995645
 PrefabInstance:
   m_ObjectHideFlags: 0

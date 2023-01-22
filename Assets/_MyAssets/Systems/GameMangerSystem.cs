@@ -45,6 +45,14 @@ public class GameMangerSystem : MonoBehaviour
         {
             enemy.enabled = false;
         }
+
+
+        Boss[] bosses = FindObjectsOfType<Boss>();
+        foreach(Boss boss in bosses)
+        {
+            boss.isPause = true;
+            boss.enabled = false;
+        }
     }
 
     public void ContinueGame()
@@ -87,6 +95,14 @@ public class GameMangerSystem : MonoBehaviour
         foreach (Enemy enemy in allEnemies)
         {
             enemy.enabled = true;
+        }
+
+
+        Boss[] bosses = FindObjectsOfType<Boss>();
+        foreach (Boss boss in bosses)
+        {
+            boss.enabled = true;
+            boss.isPause = false;
         }
     }
 }

@@ -16,6 +16,8 @@ public class Boss : MonoBehaviour
     [SerializeField] float _health;
     [SerializeField] float _speed;
     [SerializeField] float _maxXPos;
+
+    public bool isPause;
     private float _maxHealth;
     private float _moveFloat;
 
@@ -43,10 +45,10 @@ public class Boss : MonoBehaviour
             LookAtPlayer();
             yield return new WaitForEndOfFrame();
         }
-        Death();
+        StartBoss();
     }
 
-    void StartBoss()
+    public void StartBoss()
     {
         ChooseAttackPattern();
     }
@@ -138,6 +140,7 @@ public class Boss : MonoBehaviour
     private void Death()
     {
         isDead = true;
+        StopAllCoroutines();
         StartCoroutine(DeathScene());
     }
 
