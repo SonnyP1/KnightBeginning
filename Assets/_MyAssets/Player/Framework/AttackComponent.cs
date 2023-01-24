@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+
+public delegate void OnKillCountChange();
 
 public class AttackComponent : MonoBehaviour
 {
@@ -10,8 +13,11 @@ public class AttackComponent : MonoBehaviour
     [SerializeField] LayerMask EnemyLayerMask;
     [SerializeField] float AttackCooldownTime = 0.2f;
     [SerializeField] Image AttackCooldownImage;
+    private int killCount;
     private bool isCooldownActive = false;
     Animator _animator;
+
+    public OnKillCountChange onKillCountChange;
     public void AddAttackMultiplier(float val) { _attackMultiplier = Mathf.Clamp(_attackMultiplier+val,0, float.MaxValue); }
     public float _attackMultiplier = 1.0f;
     void Start()
@@ -25,7 +31,14 @@ public class AttackComponent : MonoBehaviour
     {
 
     }
-
+    private void UpdateKillCount()
+    {
+        killCount++;
+        if(onKillCountChange != null)
+        {
+            onKillCountChange.Invoke();
+        }
+    }
     public void StartAttack()
     {
         if(!isCooldownActive)
@@ -42,6 +55,7 @@ public class AttackComponent : MonoBehaviour
             if (col.GetComponent<Enemy>())
             {
                 col.GetComponent<Enemy>().Death();
+                UpdateKillCount();
 
             }
             else if(col.GetComponent<Boss>())

@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnRate: 3
-  bossSpawnTime: 3
+  bossSpawnTime: 60
   yGroundSpawn: 0.4
   Enemies:
   - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}

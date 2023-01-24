@@ -27,13 +27,13 @@ public class InGameUISystem : MonoBehaviour
 
     public void UpdateHealthUI(int desiredlength)
     {
-        Debug.Log(desiredlength);
+        //Debug.Log(desiredlength);
 
         int currentLength = heartList.Count;
-        Debug.Log(currentLength);
+        //Debug.Log(currentLength);
 
         int difference = desiredlength - currentLength;
-        Debug.Log(difference);
+        //Debug.Log(difference);
 
         if(difference > 0)
         {

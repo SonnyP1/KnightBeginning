@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool hasTriggerBox;
     [SerializeField] bool isGroundedEnemy;
     [SerializeField] bool canBeKilled;
+
     public bool IsGroundedEnemy() {return isGroundedEnemy;}
 
     CameraShaker _cameraShaker;
