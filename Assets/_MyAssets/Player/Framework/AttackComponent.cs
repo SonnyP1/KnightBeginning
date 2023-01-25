@@ -13,7 +13,7 @@ public class AttackComponent : MonoBehaviour
     [SerializeField] LayerMask EnemyLayerMask;
     [SerializeField] float AttackCooldownTime = 0.2f;
     [SerializeField] Image AttackCooldownImage;
-    private int killCount;
+    private int killCount = 0;
     private bool isCooldownActive = false;
     Animator _animator;
 

@@ -6,12 +6,21 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering.PostProcessing;
 using System;
 
+public delegate void OnDmgTaken(int val);
+
 public class HealthComp : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera deathCam;
     [SerializeField] float CurrentHealth;
     [SerializeField] float MaxHealth;
+    float dmgMultiplier = 1.0f;
+    internal void SetDmgMultiplier(float newVal)
+    {
+        dmgMultiplier = newVal;
+    }
+
     [SerializeField] PostProcessVolume _postProcessingVolume;
+    public OnDmgTaken onDmgTaken;
     private InGameUISystem _inGameUISystem;
     private ChromaticAberration _cA;
     Animator _animator;
@@ -37,7 +46,13 @@ public class HealthComp : MonoBehaviour
         if(canTakeDmg)
         {
             _animator.SetTrigger("HitTrigger");
-            CurrentHealth = Mathf.Clamp(CurrentHealth-dmg ,0, CurrentHealth);
+            if(onDmgTaken != null)
+            {
+                onDmgTaken.Invoke(dmg);
+            }
+            CurrentHealth = Mathf.Clamp(CurrentHealth - (dmg*dmgMultiplier) ,0, CurrentHealth);
+            dmgMultiplier = 1.0f;
+
             _movementComponent.PushBackHit();
             StartCoroutine(ApplyChromaticAberration(.2f,1f));
             if (CurrentHealth <= 0 && isDeathBlow)

@@ -15,12 +15,14 @@ public class VampireItem : Item
 
     private void OnDestroy()
     {
-        GetPlayerObj().GetComponent<AttackComponent>().onKillCountChange -= ChanceToHeal;
+        if(gameObject != null && GetPlayerObj() != null)
+        {
+            GetPlayerObj().GetComponent<AttackComponent>().onKillCountChange -= ChanceToHeal;
+        }
     }
     private void ChanceToHeal()
     {
         float value = GetCurrentStack() * PercentChance;
-        Debug.Log(value);
         if (UnityEngine.Random.value < value)
         {
             GetPlayerObj().GetComponent<HealthComp>().Heal(1);
