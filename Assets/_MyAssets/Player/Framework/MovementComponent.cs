@@ -14,8 +14,11 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] float HitPushBack = 3f;
     [SerializeField] GameObject JumpEffect;
     [SerializeField] Transform JumpSpawnLocEffect;
+
+
     bool isGrounded = true;
     int jumpCounter = 0;
+    int maxJumpCount = 2;
     float fastFallMultiplier = 1f;
     bool isFastFalling = false;
     CharacterController _characterController;
@@ -27,9 +30,14 @@ public class MovementComponent : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
     }
+
+    public void AddToJumpCount(int val)
+    {
+        maxJumpCount = maxJumpCount + val;
+    }
     public void Jump()
     {
-        if (jumpCounter < 2)
+        if (jumpCounter < maxJumpCount)
         {
             _cameraShaker.ShakeCamera(0.05f,0.1f);
 
