@@ -134,6 +134,7 @@ public class MovementComponent : MonoBehaviour
 
     internal void ApplyMovementStat(float multiplier)
     {
+        Debug.Log(multiplier);
         SpeedModifier += multiplier;
         Debug.Log("Added speed Multiplier");
     }

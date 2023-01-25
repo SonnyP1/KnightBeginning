@@ -49,13 +49,13 @@ public class ItemSystem : MonoBehaviour
     //DEBUG
     IEnumerator AddItemToTest()
     {
-        yield return new WaitForSecondsRealtime(5f);
         if(itemToTest != null)
         {
             GameObject newItem = Instantiate(itemToTest);
             AddItem(newItem);
-            Debug.Log("Added Test Item");
+            newItem.GetComponent<GoodAndEvilItem>().ItemSelected();
             StartCoroutine(AddItemToTest());
         }
+        yield return new WaitForSecondsRealtime(5f);
     }
 }

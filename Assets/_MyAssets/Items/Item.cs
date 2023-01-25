@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     [SerializeField] TextMeshProUGUI NameTxt;
     [SerializeField] TextMeshProUGUI ItemDesTxt;
 
+    public bool GetIsInventory() { return inInventory; }
     private bool inInventory = false;
     public GameObject GetPlayerObj() { return _player; }
     private GameObject _player;
@@ -71,14 +72,15 @@ public class Item : MonoBehaviour
             //Gets the ChestGameObject
             GameObject parentObject = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.gameObject.transform.parent.gameObject;
             transform.parent = null;
-
-            ItemActivation();
-            FindObjectOfType<GameMangerSystem>().ContinueGame();
+            //check if already in inventory then activate
             if(isStackable)
             {
                 FindObjectOfType<ItemSystem>().AddItem(gameObject);
                 inInventory = true;
             }
+
+            ItemActivation();
+            FindObjectOfType<GameMangerSystem>().ContinueGame();
 
 
 
