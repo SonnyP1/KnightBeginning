@@ -42,11 +42,19 @@ public class Enemy : MonoBehaviour
 
     private void UpdateScore()
     {
+        if(FindObjectOfType<ScoreSystem>() == null)
+        {
+            return;
+        }
         FindObjectOfType<ScoreSystem>().AddScore(1.0f);
     }
 
     private void Update()
     {
+        if(player== null)
+        {
+            return;
+        }
         float distanceFromPlayer = Vector3.Distance(transform.position,player.transform.position);
         if(distanceFromPlayer < AttackDistance && _animator != null)
         {

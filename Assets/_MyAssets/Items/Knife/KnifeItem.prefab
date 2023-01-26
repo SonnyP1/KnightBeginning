@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &695393091305576419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227099662590378116, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436306315586293198, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Name
+      value: KnifeItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 304245965951962950}
+    - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 304245965951962950}
+    - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 304245965951962950}
+    - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowNameAndDescription
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideNameAndSescription
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801202174260911551, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ItemSelected
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472227146180830146, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 36075cc1426de0b43a207b2717cc9346, type: 3}
+    - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: itemId
+      value: Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: itemDes
+      value: 5% to spawn a knife projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+      propertyPath: isStackable
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7254048760347680286, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+--- !u!114 &1640826048918988480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2261909600074838307, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_PrefabInstance: {fileID: 695393091305576419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2414745811397930948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2892558702688860199, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_PrefabInstance: {fileID: 695393091305576419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3762305881141697069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4436306315586293198, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_PrefabInstance: {fileID: 695393091305576419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &304245965951962950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762305881141697069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278d71c33398c60468a573a12449b6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: Knife
+  itemDes: 5% to spawn a knife seeking enemy
+  isStackable: 1
+  StackUI: {fileID: 2414745811397930948}
+  NameTxt: {fileID: 8616600201693919173}
+  ItemDesTxt: {fileID: 1640826048918988480}
+  knifePrefab: {fileID: 3135804578658903085, guid: cca292369f9bde0468481d1afc31a003, type: 3}
+  spawnXOffset: 0.05
+  percentageChance: 1
+--- !u!114 &8616600201693919173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9093568565025562662, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
+  m_PrefabInstance: {fileID: 695393091305576419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

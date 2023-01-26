@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public delegate void OnKillCountChange();
+public delegate void OnAttack();
 
 public class AttackComponent : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class AttackComponent : MonoBehaviour
     Animator _animator;
 
     public OnKillCountChange onKillCountChange;
+    public OnAttack onAttack;
     public void AddAttackMultiplier(float val) { _attackMultiplier = Mathf.Clamp(_attackMultiplier+val,0, float.MaxValue); }
     public float _attackMultiplier = 1.0f;
     void Start()
@@ -67,6 +69,11 @@ public class AttackComponent : MonoBehaviour
             _cameraShaker.ShakeCamera(0.5f, 0.1f);
             StartCoroutine(HitStun(.1f));
             GetComponent<MovementComponent>().ResetJump();
+        }
+
+        if(onAttack != null)
+        {
+            onAttack.Invoke();
         }
     }
 
