@@ -18,7 +18,7 @@ public class MovementComponent : MonoBehaviour
 
     bool isGrounded = true;
     int jumpCounter = 0;
-    int maxJumpCount = 2;
+    int maxJumpCount = 1;
     float fastFallMultiplier = 1f;
     bool isFastFalling = false;
     CharacterController _characterController;

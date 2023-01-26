@@ -9,6 +9,7 @@ public class SodaItem : Item
 
     public override void ItemActivation()
     {
+        base.ItemActivation();
         GetPlayerObj().GetComponent<AttackComponent>().AddAttackMultiplier(AttackMultiplierAddition);
     }
 }

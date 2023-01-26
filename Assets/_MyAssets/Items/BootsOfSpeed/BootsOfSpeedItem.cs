@@ -8,6 +8,7 @@ public class BootsOfSpeedItem : Item
     [SerializeField] float SpeedMultiplier;
     public override void ItemActivation()
     {
+        base.ItemActivation();
         GetPlayerObj().GetComponent<MovementComponent>().ApplyMovementStat(SpeedMultiplier);
     }
 }

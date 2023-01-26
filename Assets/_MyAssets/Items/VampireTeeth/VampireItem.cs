@@ -9,6 +9,7 @@ public class VampireItem : Item
     [SerializeField] float PercentChance;
     public override void ItemActivation()
     {
+        base.ItemActivation();
         GetPlayerObj().GetComponent<AttackComponent>().onKillCountChange += ChanceToHeal;
     }
 

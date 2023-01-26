@@ -23,7 +23,14 @@ public class Item : MonoBehaviour
 
     public bool GetIsInventory() { return inInventory; }
     private bool inInventory = false;
-    public GameObject GetPlayerObj() { return _player; }
+    public GameObject GetPlayerObj() 
+    {
+        if(_player == null)
+        {
+            _player = FindObjectOfType<PlayerController>().gameObject;
+        }
+        return _player; 
+    }
     private GameObject _player;
 
     private void Start()
@@ -40,7 +47,10 @@ public class Item : MonoBehaviour
 
     public virtual void ItemActivation()
     {
-
+        if(_player != null) 
+        {
+            _player = FindObjectOfType<PlayerController>().gameObject;
+        }
     }
 
     internal void AddItemStack(int val)
@@ -83,8 +93,10 @@ public class Item : MonoBehaviour
             FindObjectOfType<GameMangerSystem>().ContinueGame();
 
 
-
-            Destroy(parentObject);
+            if(parentObject != null && parentObject.GetComponent<Chest>())
+            {
+                Destroy(parentObject);
+            }
         }
     }
 }

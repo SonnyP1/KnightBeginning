@@ -8,6 +8,7 @@ public class CursedStarItem : Item
     [SerializeField] float time;
     public override void ItemActivation()
     {
+        base.ItemActivation();
         GetPlayerObj().GetComponent<HealthComp>().canTakeDmg = true;
         GetPlayerObj().GetComponent<HealthComp>().Hit(2,false);
         StartCoroutine(PowerUp());
