@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3095742430317833893}
   - component: {fileID: 4408661239326433266}
   - component: {fileID: 1902299867508152306}
+  - component: {fileID: -8181124588325174361}
   m_Layer: 3
   m_Name: SpikeTrap
   m_TagString: Untagged
@@ -52,7 +53,6 @@ MonoBehaviour:
   _boxColliderRef: {fileID: 0}
   BlowUpEffect: {fileID: 0}
   AttackDistance: 1
-  _movementSpeed: -1.5
   hasTriggerBox: 1
   isGroundedEnemy: 1
   canBeKilled: 0
@@ -69,6 +69,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.35, z: 1}
   m_Center: {x: 0, y: -0.24, z: 0}
+--- !u!114 &-8181124588325174361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779798844894269894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88393151f2dec854a9b4455c5958d03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: -1.5
 --- !u!1 &6762869582674275826
 GameObject:
   m_ObjectHideFlags: 0

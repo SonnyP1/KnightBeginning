@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     [SerializeField] TextMeshProUGUI NameTxt;
     [SerializeField] TextMeshProUGUI ItemDesTxt;
 
+    public string GetItemID() { return itemId; }
     public bool GetIsInventory() { return inInventory; }
     private bool inInventory = false;
     public GameObject GetPlayerObj() 

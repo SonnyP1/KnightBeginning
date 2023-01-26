@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7146949692484072553}
   - component: {fileID: 5892117213569971417}
   - component: {fileID: -3046511933957346012}
-  - component: {fileID: -4149783461693421115}
+  - component: {fileID: -334599858681698232}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -156,7 +156,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4149783461693421115
+--- !u!114 &-334599858681698232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,15 +165,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 537777524644479167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a99610c2ddab224aa14a5ceae24a7c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 88393151f2dec854a9b4455c5958d03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _boxColliderRef: {fileID: 0}
-  BlowUpEffect: {fileID: 0}
-  AttackDistance: 0
   _movementSpeed: -1.5
 --- !u!1 &660144840008348222
 GameObject:

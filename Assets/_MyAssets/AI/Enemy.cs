@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] BoxCollider _boxColliderRef;
     [SerializeField] GameObject BlowUpEffect;
     [SerializeField] float AttackDistance = 1f;
-    [SerializeField] float _movementSpeed;
 
     [Header("Bool")]
     [SerializeField] bool hasTriggerBox;
@@ -61,11 +60,7 @@ public class Enemy : MonoBehaviour
             _animator.SetTrigger("AttackTrigger");
         }
 
-        transform.Translate(_movementSpeed * Time.deltaTime, 0, 0);
-        if (transform.position.x < -10)
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     public void AttackHitBox()

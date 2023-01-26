@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GameMangerSystem : MonoBehaviour
 {
+    private EnemySpawner _enemySpawner;
+    private Generator _gameGenerator;
+    private void Start()
+    {
+        _enemySpawner = FindObjectOfType<EnemySpawner>();
+        _gameGenerator = FindObjectOfType<Generator>();
+    }
     public void StopGame()
     {
         StopPlayer();
@@ -25,7 +32,6 @@ public class GameMangerSystem : MonoBehaviour
     private static void StopTrack()
     {
         Generator gameGenerator = FindObjectOfType<Generator>();
-        gameGenerator.enabled = false;
         gameGenerator.StopAllCoroutines();
 
         Track[] allTracker = FindObjectsOfType<Track>();
@@ -37,21 +43,12 @@ public class GameMangerSystem : MonoBehaviour
 
     private void StopEnemies()
     {
-        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
-        enemySpawner.isPause = true;
-        enemySpawner.StopAllCoroutines();
+        _enemySpawner.isPause = true;
+        _enemySpawner.StopAllCoroutines();
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in allEnemies)
         {
-            enemy.enabled = false;
-        }
-
-
-        Boss[] bosses = FindObjectsOfType<Boss>();
-        foreach(Boss boss in bosses)
-        {
-            boss.isPause = true;
-            boss.enabled = false;
+            enemy.GetComponent<SimpleMove>().StopMovement();
         }
     }
 
@@ -72,12 +69,9 @@ public class GameMangerSystem : MonoBehaviour
             player.GetComponent<PlayerController>().EnabledGameplayInputs();
         }
     }
-    private static void ContinueTrack()
+    private void ContinueTrack()
     {
-        Generator gameGenerator = FindObjectOfType<Generator>();
-        gameGenerator.enabled = true;
-        gameGenerator.StartCoroutine(gameGenerator.SpawnNewTrack());
-
+        _gameGenerator.StartCoroutine(_gameGenerator.SpawnNewTrack());
 
         Track[] allTracker = FindObjectsOfType<Track>();
         foreach (Track track in allTracker)
@@ -86,23 +80,15 @@ public class GameMangerSystem : MonoBehaviour
         }
     }
 
-    private static void ContinueEnemies()
+    private void ContinueEnemies()
     {
-        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
-        enemySpawner.isPause = false;
-        enemySpawner.StartCoroutine(enemySpawner.StartSpawning());
+        _enemySpawner.isPause = false;
+        _enemySpawner.StartCoroutine(_enemySpawner.StartSpawning());
+
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in allEnemies)
         {
-            enemy.enabled = true;
-        }
-
-
-        Boss[] bosses = FindObjectsOfType<Boss>();
-        foreach (Boss boss in bosses)
-        {
-            boss.enabled = true;
-            boss.isPause = false;
+            enemy.GetComponent<SimpleMove>().ContinueMovement();
         }
     }
 }

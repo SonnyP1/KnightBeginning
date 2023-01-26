@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour
 {
     [SerializeField] AllItems items;
     [SerializeField] GameObject[] itemHolders;
+
     Animator _chestAnimator;
     GameMangerSystem _gameManagerSystem;
     private GameObject item1;
@@ -28,6 +29,7 @@ public class Chest : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             _chestAnimator.SetTrigger("OpenChest");
+            GetComponent<SimpleMove>().StopMovement();
             _gameManagerSystem.StopGame();
         }
 

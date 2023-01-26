@@ -17,12 +17,11 @@ public class BlindBagItem : Item
     public override void ItemActivation()
     {
         base.ItemActivation();
-        GameObject[] allItems = _allItemList.GetAllItems().ToArray();
-        GameObject randItem = allItems[Random.RandomRange(0, allItems.Length)];
+        GameObject randomItem = ChooseRandomItem();
 
         for(int i = 0; i < maxItems; i++)
         {
-            GameObject spawnedItem = Instantiate(randItem, gameObject.transform);
+            GameObject spawnedItem = Instantiate(randomItem, gameObject.transform);
             spawnedItem.GetComponent<Item>().ItemSelected();
         }
 
@@ -31,6 +30,19 @@ public class BlindBagItem : Item
         IncreaseBlindness(0.2f);
     }
 
+    private GameObject ChooseRandomItem()
+    {
+        GameObject[] allItems = _allItemList.GetAllItems().ToArray();
+        GameObject randItem = allItems[Random.Range(0, allItems.Length)];
+        string chosenItemID = randItem.GetComponent<Item>().GetItemID();
+
+        if(chosenItemID == GetItemID())
+        {
+            return ChooseRandomItem();
+        }
+
+        return randItem;
+    }
     void IncreaseBlindness(float val)
     {
         _postProcessingVolume.profile.TryGetSettings(out _vignette);

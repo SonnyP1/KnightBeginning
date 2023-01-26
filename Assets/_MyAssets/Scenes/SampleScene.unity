@@ -492,7 +492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e295a90aac6a2499555de9665ad374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRate: 3
+  maxSpawnRate: 3
+  minSpawnRate: 1
   bossSpawnTime: 60
   yGroundSpawn: 0.4
   Enemies:

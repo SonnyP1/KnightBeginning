@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Range(0.5f, 5f)]
-    [SerializeField] float SpawnRate;
+    [Range(2f, 5f)]
+    [SerializeField] float maxSpawnRate;
+    [Range(2f, 1f)]
+    [SerializeField] float minSpawnRate;
     [SerializeField] float bossSpawnTime;
 
     [SerializeField] float yGroundSpawn;
@@ -19,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartSpawning());
+        //StartCoroutine(StartSpawning());
         SpawnChest();
     }
 
@@ -31,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator StartSpawning()
     {
+
         while(true)
         {
             int randomInt = Random.Range(0, Enemies.Length);
@@ -40,9 +43,10 @@ public class EnemySpawner : MonoBehaviour
                 yOffset = Random.Range(0.5f, 1f);
             }
             Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y+ yGroundSpawn + yOffset, transform.position.z);
-            Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
+            GameObject newEnemy = Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
+            newEnemy.GetComponent<SimpleMove>();
 
-            yield return new WaitForSeconds(Random.Range(0.5f, SpawnRate));
+            yield return new WaitForSeconds(Random.Range(minSpawnRate, maxSpawnRate));
         }
     }
 
