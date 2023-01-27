@@ -15,6 +15,9 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] GameObject JumpEffect;
     [SerializeField] Transform JumpSpawnLocEffect;
 
+    private float leftLimit = -2.0f;
+    private float rightLimit = 2.0f;
+
 
     bool isGrounded = true;
     int jumpCounter = 0;
@@ -69,6 +72,16 @@ public class MovementComponent : MonoBehaviour
             jumpCounter = 0;
         }
         moveVelocity.y += (_gravity*fastFallMultiplier) * Time.deltaTime;
+
+        if(gameObject.transform.position.x < leftLimit && moveVelocity.x < 0)
+        {
+            moveVelocity.x = 0;
+        }
+        else if(gameObject.transform.position.x > rightLimit && moveVelocity.x > 0)
+        {
+            moveVelocity.x = 0;
+        }
+
         _characterController.Move(moveVelocity*Time.deltaTime);
     }
 

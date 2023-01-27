@@ -24,6 +24,9 @@ public class Item : MonoBehaviour
     public string GetItemID() { return itemId; }
     public bool GetIsInventory() { return inInventory; }
     private bool inInventory = false;
+
+    public void SetParentObj(GameObject newParentObj) { parentObj = newParentObj; }
+    private GameObject parentObj;
     public GameObject GetPlayerObj() 
     {
         if(_player == null)
@@ -81,22 +84,22 @@ public class Item : MonoBehaviour
         if(!inInventory)
         {
             //Gets the ChestGameObject
-            GameObject parentObject = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.gameObject.transform.parent.gameObject;
-            transform.parent = null;
+            transform.SetParent(null);
             //check if already in inventory then activate
             if(isStackable)
             {
                 FindObjectOfType<ItemSystem>().AddItem(gameObject);
                 inInventory = true;
             }
-
-            ItemActivation();
-            FindObjectOfType<GameMangerSystem>().ContinueGame();
-
-
-            if(parentObject != null && parentObject.GetComponent<Chest>())
+            else
             {
-                Destroy(parentObject);
+                ItemActivation();
+            }
+
+            if(parentObj != null)
+            {
+                FindObjectOfType<GameMangerSystem>().ContinueGame();
+                Destroy(parentObj);
             }
         }
     }

@@ -185,7 +185,7 @@ MonoBehaviour:
   ItemDesTxt: {fileID: 1640826048918988480}
   knifePrefab: {fileID: 3135804578658903085, guid: cca292369f9bde0468481d1afc31a003, type: 3}
   spawnXOffset: 0.05
-  percentageChance: 1
+  percentageChance: 0.05
 --- !u!114 &8616600201693919173 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9093568565025562662, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}

@@ -48,13 +48,16 @@ public class Chest : MonoBehaviour
         itemHolders[0].SetActive(true);
         yield return new WaitForSecondsRealtime(0.2f);
         GameObject spawnedItem1 = Instantiate(item1,itemHolders[0].transform);
+        spawnedItem1.GetComponent<Item>().SetParentObj(gameObject);
 
         itemHolders[1].SetActive(true);
         yield return new WaitForSecondsRealtime(0.2f);
         GameObject spawnedItem2 = Instantiate(item2, itemHolders[1].transform);
+        spawnedItem2.GetComponent<Item>().SetParentObj(gameObject);
 
         itemHolders[2].SetActive(true);
         yield return new WaitForSecondsRealtime(0.2f);
         GameObject spawnedItem3 = Instantiate(item3, itemHolders[2].transform);
+        spawnedItem3.GetComponent<Item>().SetParentObj(gameObject);
     }
 }

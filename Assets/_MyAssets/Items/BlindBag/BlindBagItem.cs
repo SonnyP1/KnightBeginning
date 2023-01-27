@@ -14,6 +14,7 @@ public class BlindBagItem : Item
     private PostProcessVolume _postProcessingVolume;
     private Vignette _vignette;
 
+    //ITEM BUG : Stacking just break somehow
     public override void ItemActivation()
     {
         base.ItemActivation();

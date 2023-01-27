@@ -12,8 +12,6 @@ public class VampireItem : Item
         base.ItemActivation();
         GetPlayerObj().GetComponent<AttackComponent>().onKillCountChange += ChanceToHeal;
     }
-
-
     private void OnDestroy()
     {
         if(gameObject != null && GetPlayerObj() != null)

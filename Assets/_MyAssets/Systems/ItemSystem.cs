@@ -17,6 +17,7 @@ public class ItemSystem : MonoBehaviour
     }
     public void AddItem(GameObject newItem)
     {
+        newItem.GetComponent<Item>().ItemActivation();
         bool isDuplicatedItem = false;
         foreach (GameObject itemEquip in itemsEquip)
         {
