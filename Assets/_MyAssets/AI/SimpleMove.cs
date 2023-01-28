@@ -6,8 +6,8 @@ public class SimpleMove : MonoBehaviour
 {
     [SerializeField] float _movementSpeed;
     private float _orginalSpeed;
-    // Update is called once per frame
-    private void Start()
+
+    private void Awake()
     {
         _orginalSpeed = _movementSpeed;
     }

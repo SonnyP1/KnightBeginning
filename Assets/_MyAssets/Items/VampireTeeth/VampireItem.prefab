@@ -155,12 +155,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: Vampire Teeth
-  itemDes: Adds a 1% chance for lifesteal
+  itemDes: Adds a 2% chance for lifesteal
   isStackable: 1
   StackUI: {fileID: 3572855913592191991}
   NameTxt: {fileID: 7459055240162763766}
   ItemDesTxt: {fileID: 491685771181994739}
-  PercentChance: 0.01
+  PercentChance: 0.02
 --- !u!114 &3572855913592191991 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2892558702688860199, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}

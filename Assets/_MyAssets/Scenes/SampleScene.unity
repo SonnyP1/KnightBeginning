@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpawnRate: 3
-  minSpawnRate: 1
+  minSpawnRate: 0.5
   bossSpawnTime: 60
   yGroundSpawn: 0.4
   Enemies:

@@ -76,11 +76,17 @@ public class HealthComp : MonoBehaviour
         isDead = true;
         StartCoroutine(DeathStun(5f));
         GetComponent<PlayerController>().enabled = false;
-        Enemy[] allEnemies = FindObjectsOfType<Enemy>();
-        foreach(Enemy enemy in allEnemies)
+        SimpleMove[] allMovementObj = FindObjectsOfType<SimpleMove>();
+        foreach(SimpleMove movementObj in allMovementObj)
         {
-            enemy.enabled = false;
+            movementObj.StopMovement();
+            Enemy movementObjAsEnemy = movementObj.GetComponent<Enemy>();
+            if(movementObjAsEnemy != null)
+            {
+                movementObjAsEnemy.enabled = false;
+            }
         }
+        Destroy(FindObjectOfType<EnemySpawner>().gameObject);
 
         Destroy(FindObjectOfType<Generator>().gameObject);
         Track[] allTracker = FindObjectsOfType<Track>();
@@ -88,6 +94,7 @@ public class HealthComp : MonoBehaviour
         {
             track.SetTrackMovementSpeed(0.0f);
         }
+
 
         deathCam.Priority = 100;
         _animator.SetTrigger("DeathTrigger");

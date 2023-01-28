@@ -126,7 +126,7 @@ MonoBehaviour:
     m_Bits: 64
   _boxColliderRef: {fileID: 1138872523489839613}
   BlowUpEffect: {fileID: 6836888543163375580, guid: 02986f4211cba104ba14a4515cd14af4, type: 3}
-  AttackDistance: 2
+  AttackDistance: 1.5
   hasTriggerBox: 0
   isGroundedEnemy: 0
   canBeKilled: 1

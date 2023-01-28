@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [Range(2f, 5f)]
     [SerializeField] float maxSpawnRate;
-    [Range(2f, 1f)]
+    [Range(2f, 0f)]
     [SerializeField] float minSpawnRate;
     [SerializeField] float bossSpawnTime;
 
@@ -43,8 +43,8 @@ public class EnemySpawner : MonoBehaviour
                 yOffset = Random.Range(0.5f, 1f);
             }
             Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y+ yGroundSpawn + yOffset, transform.position.z);
-            GameObject newEnemy = Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
-            newEnemy.GetComponent<SimpleMove>();
+            Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
+
 
             yield return new WaitForSeconds(Random.Range(minSpawnRate, maxSpawnRate));
         }

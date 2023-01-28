@@ -144,12 +144,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: Faulty Shield
-  itemDes: 1% chance to block damage
+  itemDes: 2% chance to block damage
   isStackable: 1
   StackUI: {fileID: 2079753680220538211}
   NameTxt: {fileID: 5389245568795106658}
   ItemDesTxt: {fileID: 3142176532863192167}
-  percentageChance: 0.01
+  percentageChance: 0.02
 --- !u!114 &2079753680220538211 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2892558702688860199, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}
