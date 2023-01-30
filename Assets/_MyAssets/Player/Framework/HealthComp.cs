@@ -41,7 +41,7 @@ public class HealthComp : MonoBehaviour
         CurrentHealth = MaxHealth;
         _inGameUISystem.UpdateHealthUI((int)CurrentHealth);
     }
-    public void Hit(int dmg, bool isDeathBlow)
+    public void Hit(int dmg, bool isDeathBlow = true)
     {
         if(canTakeDmg)
         {

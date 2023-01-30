@@ -159,13 +159,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: Good and Evil
-  itemDes: Every 10 seconds alternate between 35% position and negative speed boost.
+  itemDes: Every 10 seconds alternate between 25% position and negative speed boost.
   isStackable: 1
   StackUI: {fileID: 6170995418078148469}
   NameTxt: {fileID: 267244125414649716}
   ItemDesTxt: {fileID: 7125895001013632625}
   alternatatingTime: 10
-  multiplierStat: 0.35
+  multiplierStat: 0.25
 --- !u!114 &6170995418078148469 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2892558702688860199, guid: 8055d19c6f90a994fb69f3779854bf83, type: 3}

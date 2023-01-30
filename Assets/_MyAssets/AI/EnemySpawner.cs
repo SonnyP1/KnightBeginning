@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [Range(2f, 0f)]
     [SerializeField] float minSpawnRate;
     [SerializeField] float bossSpawnTime;
+    private float spawnRateChangeTime;
 
     [SerializeField] float yGroundSpawn;
     [SerializeField] GameObject[] Enemies;
@@ -75,6 +76,14 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnBoss();
                 bossTimer = 0f;
+            }
+
+            spawnRateChangeTime += Time.deltaTime;
+            if(spawnRateChangeTime > 5f)
+            {
+                maxSpawnRate = Mathf.Clamp(maxSpawnRate - 0.1f, 2f, 5f);
+                minSpawnRate = Mathf.Clamp(minSpawnRate - 0.1f, 2f, 0f);
+                spawnRateChangeTime = 0f;
             }
         }
     }

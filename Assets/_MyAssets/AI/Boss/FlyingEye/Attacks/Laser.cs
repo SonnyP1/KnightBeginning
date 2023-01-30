@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
@@ -9,6 +10,8 @@ public class Laser : MonoBehaviour
     [SerializeField] SpriteRenderer _laserSpriteRender;
     [SerializeField] BoxCollider _boxColliderRef;
 
+
+    bool canHit = false;
     private void Start()
     {
         StartCoroutine(StartLaserAttack());
@@ -35,40 +38,21 @@ public class Laser : MonoBehaviour
         
         yield return new WaitForSeconds(_laserTimer/5);
         _laserSpriteRender.color = Color.white;
-    
+
 
         //Do Overlap here
-        SpawnHitBox();
+        canHit = true;
+        _boxColliderRef.enabled = true;
 
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
-    void SpawnHitBox()
+    private void OnTriggerEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapBox(_boxColliderRef.gameObject.transform.position + _boxColliderRef.center,
-            _boxColliderRef.size, 
-            transform.rotation, _playerMask);
-
-        foreach (Collider col in colliders)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            HealthComp playerHealth = col.gameObject.GetComponent<HealthComp>();
-            if (playerHealth.GetCurrentHealth() > 0)
-            {
-                playerHealth.Hit(1, true);
-                FindObjectOfType<CameraShaker>().ShakeCamera(1f, 0.1f);
-                if (playerHealth.GetCurrentHealth() > 0)
-                {
-                    StartCoroutine(HitStun(.2f));
-                }
-            }
+            other.gameObject.GetComponent<HealthComp>().Hit(1);
         }
-    }
-
-    IEnumerator HitStun(float duration)
-    {
-        Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
     }
 }
