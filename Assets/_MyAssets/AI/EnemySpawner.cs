@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             bossTimer += Time.deltaTime;
-
+            Debug.Log(bossTimer);
             if(bossTimer > bossSpawnTime)
             {
                 SpawnBoss();
