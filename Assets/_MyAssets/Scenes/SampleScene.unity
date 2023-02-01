@@ -1777,18 +1777,10 @@ PrefabInstance:
       propertyPath: _postProcessingVolume
       value: 
       objectReference: {fileID: 977315159}
-    - target: {fileID: 2507127719880629935, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
-      propertyPath: itemToTest
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3251932907436329850, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
       propertyPath: _cameraShaker
       value: 
       objectReference: {fileID: 963194229}
-    - target: {fileID: 3251932907436329850, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
-      propertyPath: AttackCooldownTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3251932907436329850, guid: dd1511d2e0e43c047adcbfae9951b404, type: 3}
       propertyPath: AttackCooldownImage
       value: 

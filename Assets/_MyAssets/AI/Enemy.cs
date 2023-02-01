@@ -59,8 +59,6 @@ public class Enemy : MonoBehaviour
         {
             _animator.SetTrigger("AttackTrigger");
         }
-
-
     }
 
     public void AttackHitBox()

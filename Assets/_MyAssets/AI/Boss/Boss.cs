@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
     [Header("Objects")]
     [SerializeField] GameObject SpriteObj;
     [SerializeField] GameObject _explosionObj;
+    [SerializeField] GameObject _eyeMinion;
     [Header("Stats")]
     [SerializeField] Vector3 BossStartLoc;
     [SerializeField] float _timeToStartBoss;
@@ -20,6 +21,7 @@ public class Boss : MonoBehaviour
     public bool isPause;
     private float _maxHealth;
     private float _moveFloat;
+    private int _minionSpawn;
 
     [Header("Projectile")]
     [SerializeField] Transform _projectileSpawnPoint;
@@ -55,14 +57,15 @@ public class Boss : MonoBehaviour
 
     void  ChooseAttackPattern()
     {
-        int randomInt = Random.Range(0, 1);
+        int randomInt = Random.Range(0, 2);
         switch (randomInt)
         {
             case 0:
                 StartCoroutine(FireLaser());
                 break;
             case 1:
-                StartCoroutine(FireLaser());
+                _minionSpawn = 0;
+                StartCoroutine(SpawnMinions());
                 break;
             default:
                 StartCoroutine(BossBreak());
@@ -96,6 +99,30 @@ public class Boss : MonoBehaviour
 
         transform.position = new Vector3(0 + Mathf.Sin(_moveFloat * _speed) * _maxXPos,yPos,zPos);
     }
+
+    IEnumerator SpawnMinions()
+    {
+        float time = 0.0f;
+        while(time < 2f)
+        {
+            time += Time.deltaTime;
+            LookAtPlayer();
+            MoveBoss();
+            yield return new WaitForEndOfFrame();
+        }
+        _minionSpawn++;
+        FireProjectile(_eyeMinion);
+
+        if(_minionSpawn == 3)
+        {
+            StartCoroutine(BossBreak());
+        }
+        else
+        {
+            StartCoroutine(SpawnMinions());
+        }
+    }
+
 
     IEnumerator FireLaser()
     {

@@ -48,7 +48,10 @@ public class GameMangerSystem : MonoBehaviour
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in allEnemies)
         {
-            enemy.GetComponent<SimpleMove>().StopMovement();
+            if (enemy.GetComponent<SimpleMove>() != null)
+            {
+                enemy.GetComponent<SimpleMove>().StopMovement();
+            }
         }
     }
 
@@ -88,7 +91,10 @@ public class GameMangerSystem : MonoBehaviour
         Enemy[] allEnemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in allEnemies)
         {
-            enemy.GetComponent<SimpleMove>().ContinueMovement();
+            if(enemy.GetComponent<SimpleMove>() != null)
+            {
+                enemy.GetComponent<SimpleMove>().ContinueMovement();
+            }
         }
     }
 }
