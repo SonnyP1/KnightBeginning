@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -28,6 +29,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnChest()
     {
+        if (CheckForBoss())
+        {
+            return;
+        }
+
+
         Vector3 spawnLoc = new Vector3(transform.position.x, -0.8f, transform.position.z);
         Instantiate(Chest, spawnLoc, Quaternion.identity);
     }
@@ -86,5 +93,28 @@ public class EnemySpawner : MonoBehaviour
                 spawnRateChangeTime = 0f;
             }
         }
+    }
+
+    private bool CheckForBoss()
+    {
+        if(FindObjectOfType<Boss>())
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SpawnTripleChestReward()
+    {
+        StartCoroutine(SpawnTripleChest());
+    }
+    private IEnumerator SpawnTripleChest()
+    {
+        yield return new WaitForSeconds(0.3f);
+        SpawnChest();
+        yield return new WaitForSeconds(0.3f);
+        SpawnChest();
+        yield return new WaitForSeconds(0.3f);
+        SpawnChest();
     }
 }

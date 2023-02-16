@@ -29,10 +29,10 @@ public class GameMangerSystem : MonoBehaviour
         }
 
     }
-    private static void StopTrack()
+    private void StopTrack()
     {
-        Generator gameGenerator = FindObjectOfType<Generator>();
-        gameGenerator.StopAllCoroutines();
+        _gameGenerator.StopAllCoroutines();
+        _gameGenerator.isPause = true;
 
         Track[] allTracker = FindObjectsOfType<Track>();
         foreach (Track track in allTracker)
@@ -51,6 +51,15 @@ public class GameMangerSystem : MonoBehaviour
             if (enemy.GetComponent<SimpleMove>() != null)
             {
                 enemy.GetComponent<SimpleMove>().StopMovement();
+            }
+        }
+
+        Chest[] allChests = FindObjectsOfType<Chest>();
+        foreach(Chest chest in allChests)
+        {
+            if(chest.GetComponent<SimpleMove>() != null)
+            {
+                chest.GetComponent<SimpleMove>().StopMovement();
             }
         }
     }
@@ -75,6 +84,7 @@ public class GameMangerSystem : MonoBehaviour
     private void ContinueTrack()
     {
         _gameGenerator.StartCoroutine(_gameGenerator.SpawnNewTrack());
+        _gameGenerator.isPause = false;
 
         Track[] allTracker = FindObjectsOfType<Track>();
         foreach (Track track in allTracker)
@@ -94,6 +104,15 @@ public class GameMangerSystem : MonoBehaviour
             if(enemy.GetComponent<SimpleMove>() != null)
             {
                 enemy.GetComponent<SimpleMove>().ContinueMovement();
+            }
+        }
+
+        Chest[] allChests = FindObjectsOfType<Chest>();
+        foreach (Chest chest in allChests)
+        {
+            if (chest.GetComponent<SimpleMove>() != null)
+            {
+                chest.GetComponent<SimpleMove>().ContinueMovement();
             }
         }
     }

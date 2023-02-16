@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer spriteBG;
     [SerializeField] GameObject[] TrackToSpawn;
     [SerializeField] Transform EndSpawnPoint;
     [SerializeField] float Speed;
+    public bool isPause = false;
     private float _trackSize;
     void Start()
     {
         _trackSize = 3.59f;
         GenerateBeginningTiles();
     }
-
+    private void Update()
+    {
+        if(!isPause)
+        {
+            spriteBG.size = new Vector2(spriteBG.size.x + Time.deltaTime, spriteBG.size.y);
+        }
+    }
     void GenerateBeginningTiles()
     {
         float distanceToEnd = transform.position.x - EndSpawnPoint.position.x;

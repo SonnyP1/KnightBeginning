@@ -185,7 +185,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 3.84, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpawnRate: 3
   minSpawnRate: 0.5
-  bossSpawnTime: 30
+  bossSpawnTime: 60
   yGroundSpawn: 0.4
   Enemies:
   - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}
@@ -1602,10 +1602,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bab5c754f668794ea13fb94b9829b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteBG: {fileID: 34234127}
   TrackToSpawn:
   - {fileID: 1338580591076289610, guid: 3205d71c637253f41a990c821705350d, type: 3}
   EndSpawnPoint: {fileID: 672826053}
   Speed: -1.5
+  isPause: 0
 --- !u!1 &2142600327
 GameObject:
   m_ObjectHideFlags: 0

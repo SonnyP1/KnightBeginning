@@ -187,6 +187,8 @@ public class Boss : MonoBehaviour
             SpriteObj.transform.position = new Vector3 ( initialPos.x + Mathf.Sin(Time.time * speed) * amountX, initialPos.y +Mathf.Sin(Time.time * speed)* amountY, initialPos.z);
             yield return new WaitForEndOfFrame();
         }
+
+        FindObjectOfType<EnemySpawner>().SpawnTripleChestReward();
         Destroy(gameObject);
     }
 
