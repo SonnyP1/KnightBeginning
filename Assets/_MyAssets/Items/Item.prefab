@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 5472227146180830146}
   - component: {fileID: 7254048760347680286}
   - component: {fileID: 4801202174260911551}
+  - component: {fileID: 6958157000333350029}
+  - component: {fileID: 6665317594354923614}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -362,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 
   itemDes: 
-  movementMultiplier: 0
+  isStackable: 0
   StackUI: {fileID: 2892558702688860199}
   NameTxt: {fileID: 9093568565025562662}
   ItemDesTxt: {fileID: 2261909600074838307}
@@ -427,6 +429,44 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!223 &6958157000333350029
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436306315586293198}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &6665317594354923614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436306315586293198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5245865677750501030
 GameObject:
   m_ObjectHideFlags: 0
