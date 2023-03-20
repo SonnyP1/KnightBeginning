@@ -7,6 +7,7 @@ using UnityEngine.Rendering.PostProcessing;
 using System;
 
 public delegate void OnDmgTaken(int val);
+public delegate void OnDeath();
 
 public class HealthComp : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class HealthComp : MonoBehaviour
     }
 
     [SerializeField] PostProcessVolume _postProcessingVolume;
+    public OnDeath onDeath;
     public OnDmgTaken onDmgTaken;
     private InGameUISystem _inGameUISystem;
     private ChromaticAberration _cA;
@@ -74,6 +76,7 @@ public class HealthComp : MonoBehaviour
     void Death()
     {
         isDead = true;
+        onDeath.Invoke();
         StartCoroutine(DeathStun(5f));
         GetComponent<PlayerController>().enabled = false;
         SimpleMove[] allMovementObj = FindObjectsOfType<SimpleMove>();
@@ -96,8 +99,13 @@ public class HealthComp : MonoBehaviour
         }
 
 
-        deathCam.Priority = 100;
+        SetDeathCamPriority(100);
         _animator.SetTrigger("DeathTrigger");
+    }
+
+    public void SetDeathCamPriority(int val)
+    {
+        deathCam.Priority = val;
     }
     IEnumerator DeathStun(float duration)
     {

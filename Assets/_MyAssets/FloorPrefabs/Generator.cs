@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer spriteMG;
     [SerializeField] SpriteRenderer spriteBG;
+
     [SerializeField] GameObject[] TrackToSpawn;
     [SerializeField] Transform EndSpawnPoint;
     [SerializeField] float Speed;
@@ -19,7 +21,8 @@ public class Generator : MonoBehaviour
     {
         if(!isPause)
         {
-            spriteBG.size = new Vector2(spriteBG.size.x + Time.deltaTime, spriteBG.size.y);
+            spriteMG.size = new Vector2(spriteMG.size.x + Time.deltaTime, spriteMG.size.y);
+            spriteBG.size = new Vector2(spriteBG.size.x + Time.deltaTime * 0.4f, spriteBG.size.y);
         }
     }
     void GenerateBeginningTiles()
