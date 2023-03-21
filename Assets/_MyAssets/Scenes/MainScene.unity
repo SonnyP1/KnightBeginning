@@ -772,11 +772,12 @@ MonoBehaviour:
   maxSpawnRate: 3
   minSpawnRate: 0.5
   bossSpawnTime: 60
-  yGroundSpawn: 0.4
+  yGroundSpawn: 0.3
   Enemies:
-  - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}
   - {fileID: 1600643447417531737, guid: 08974380201b2884282e1d0b3f1fa8de, type: 3}
+  - {fileID: 6922314234979744237, guid: 7c087942ea784334c947ea727eae9db2, type: 3}
   - {fileID: 2779798844894269894, guid: 9a00b73981208864c956cba76b67d824, type: 3}
+  - {fileID: 6922314234979744237, guid: 7e50d27cea661bd4b8563fefe29c125c, type: 3}
   Bosses:
   - {fileID: 6932764118351674846, guid: 311e915bf5438684ab1643962c7993df, type: 3}
   Chest: {fileID: 537777524644479167, guid: a475c3e721785d046b1829d88cef774b, type: 3}
@@ -1733,7 +1734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.019, y: -0.76600003, z: 1.185}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

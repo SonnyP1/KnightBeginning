@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 yOffset = Random.Range(0.5f, 1f);
             }
-            Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y+ yGroundSpawn + yOffset, transform.position.z);
+            Vector3 spawnLoc = new Vector3(transform.position.x,transform.position.y + yOffset, transform.position.z);
             Instantiate(Enemies[randomInt],spawnLoc,Quaternion.identity);
 
 
@@ -88,8 +88,8 @@ public class EnemySpawner : MonoBehaviour
             spawnRateChangeTime += Time.deltaTime;
             if(spawnRateChangeTime > 5f)
             {
-                maxSpawnRate = Mathf.Clamp(maxSpawnRate - 0.1f, 2f, 5f);
-                minSpawnRate = Mathf.Clamp(minSpawnRate - 0.1f, 2f, 0f);
+                maxSpawnRate = Random.Range(2f, 5f);
+                minSpawnRate = Random.Range(2f,0f);
                 spawnRateChangeTime = 0f;
             }
         }

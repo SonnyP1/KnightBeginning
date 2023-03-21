@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float GroundOffset;
     [SerializeField] LayerMask PlayerMask;
     [SerializeField] BoxCollider _boxColliderRef;
     [SerializeField] GameObject BlowUpEffect;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerController>().gameObject;
         _animator = GetComponent<Animator>();
         transform.parent = null;
+        transform.position += new Vector3(0,GroundOffset,0);
     }
     public void Death()
     {
@@ -45,12 +47,12 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        FindObjectOfType<ScoreSystem>().AddScore(1.0f);
+        FindObjectOfType<ScoreSystem>().AddScore(2f);
     }
 
     private void Update()
     {
-        if(player== null)
+        if(player == null)
         {
             return;
         }
