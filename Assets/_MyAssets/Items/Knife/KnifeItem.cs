@@ -20,9 +20,14 @@ public class KnifeItem : Item
 
     private void OnDestroy()
     {
-        if(gameObject != null && GetPlayerObj() != null)
+        if(gameObject != null)
         {
-            GetPlayerObj().GetComponent<AttackComponent>().onAttack -= SpawnKnife;
+            GameObject player = GetPlayerObj();
+            if(player == null || player.GetComponent<AttackComponent>() == null)
+            {
+                return;
+            }
+            player.GetComponent<AttackComponent>().onAttack -= SpawnKnife;
         }
     }
 

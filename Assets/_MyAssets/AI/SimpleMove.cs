@@ -19,7 +19,12 @@ public class SimpleMove : MonoBehaviour
     {
         _movementSpeed= 0;
     }
-    void Update()
+
+    private void Update()
+    {
+        UpdateMovement();
+    }
+    public virtual void UpdateMovement()
     {
         transform.Translate(_movementSpeed * Time.deltaTime, 0, 0);
         if (transform.position.x < -10)

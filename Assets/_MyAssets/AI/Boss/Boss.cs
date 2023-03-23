@@ -6,11 +6,13 @@ using UnityEngine.UIElements;
 public class Boss : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] GameObject SpriteObj;
+    [SerializeField] GameObject _spriteObj;
     [SerializeField] GameObject _explosionObj;
     [SerializeField] GameObject _eyeMinion;
+
+
     [Header("Stats")]
-    [SerializeField] Vector3 BossStartLoc;
+    [SerializeField] Vector3 _bossStartLoc;
     [SerializeField] float _timeToStartBoss;
     [SerializeField] float LaserAimTime;
     [SerializeField] float BossBreakTime;
@@ -18,14 +20,17 @@ public class Boss : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] float _maxXPos;
 
-    public bool isPause;
-    private float _maxHealth;
-    private float _moveFloat;
-    private int _minionSpawn;
+
 
     [Header("Projectile")]
     [SerializeField] Transform _projectileSpawnPoint;
     [SerializeField] GameObject _laserProjectile;
+
+    //private variables
+    private bool isPause;
+    private float _maxHealth;
+    private float _moveFloat;
+    private int _minionSpawn;
     private GameObject _playerObj;
     private bool isDead;
 
@@ -43,7 +48,7 @@ public class Boss : MonoBehaviour
         while(time < _timeToStartBoss)
         {
             time += Time.deltaTime;
-            transform.position = Vector3.Lerp(initialPos,BossStartLoc, time/_timeToStartBoss);
+            transform.position = Vector3.Lerp(initialPos,_bossStartLoc, time/_timeToStartBoss);
             LookAtPlayer();
             yield return new WaitForEndOfFrame();
         }
@@ -55,17 +60,16 @@ public class Boss : MonoBehaviour
         ChooseAttackPattern();
     }
 
-    void  ChooseAttackPattern()
+    public virtual void  ChooseAttackPattern()
     {
         int randomInt = Random.Range(0, 2);
         switch (randomInt)
         {
             case 0:
-                StartCoroutine(FireLaser());
+                StartCoroutine(AttackPatternOne());
                 break;
             case 1:
-                _minionSpawn = 0;
-                StartCoroutine(SpawnMinions());
+                StartCoroutine(AttackPatternTwo());
                 break;
             default:
                 StartCoroutine(BossBreak());
@@ -74,14 +78,14 @@ public class Boss : MonoBehaviour
     }
 
 
-    IEnumerator BossBreak()
+    public virtual IEnumerator BossBreak()
     {
         float time = 0.0f;
 
         while(time < BossBreakTime)
         {
             time += Time.deltaTime;
-            MoveBoss();
+            HandleBossMovement();
             LookAtPlayer();
             yield return new WaitForEndOfFrame();
         }
@@ -90,7 +94,7 @@ public class Boss : MonoBehaviour
 
 
 
-    void MoveBoss()
+    public virtual void HandleBossMovement()
     {
         float yPos = gameObject.transform.position.y;
         float zPos = gameObject.transform.position.z;
@@ -100,31 +104,9 @@ public class Boss : MonoBehaviour
         transform.position = new Vector3(0 + Mathf.Sin(_moveFloat * _speed) * _maxXPos,yPos,zPos);
     }
 
-    IEnumerator SpawnMinions()
-    {
-        float time = 0.0f;
-        while(time < 2f)
-        {
-            time += Time.deltaTime;
-            LookAtPlayer();
-            MoveBoss();
-            yield return new WaitForEndOfFrame();
-        }
-        _minionSpawn++;
-        FireProjectile(_eyeMinion);
-
-        if(_minionSpawn == 3)
-        {
-            StartCoroutine(BossBreak());
-        }
-        else
-        {
-            StartCoroutine(SpawnMinions());
-        }
-    }
 
 
-    IEnumerator FireLaser()
+    public virtual IEnumerator AttackPatternOne()
     {
         float time = 0.0f;
         while(time < LaserAimTime)
@@ -138,18 +120,41 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(2f);
         StartCoroutine(BossBreak());
     }
+    public virtual IEnumerator AttackPatternTwo()
+    {
+        _minionSpawn = 0;
+        float time = 0.0f;
+        while(time < 2f)
+        {
+            time += Time.deltaTime;
+            LookAtPlayer();
+            HandleBossMovement();
+            yield return new WaitForEndOfFrame();
+        }
+        _minionSpawn++;
+        FireProjectile(_eyeMinion);
 
-    void FireProjectile(GameObject projectileToSpawn)
+        if(_minionSpawn == 3)
+        {
+            StartCoroutine(BossBreak());
+        }
+        else
+        {
+            StartCoroutine(AttackPatternTwo());
+        }
+    }
+
+    public void FireProjectile(GameObject projectileToSpawn)
     {
         GameObject newProjectile = Instantiate(projectileToSpawn, _projectileSpawnPoint);
         newProjectile.transform.parent = null;
     }
     private void LookAtPlayer()
     {
-        Vector3 diff = _playerObj.transform.position - SpriteObj.transform.position;
+        Vector3 diff = _playerObj.transform.position - _spriteObj.transform.position;
         diff.Normalize();
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        SpriteObj.transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90f);
+        _spriteObj.transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90f);
     }
 
     internal void Hit()
@@ -171,7 +176,7 @@ public class Boss : MonoBehaviour
         StartCoroutine(DeathScene());
     }
 
-    IEnumerator DeathScene()
+    public virtual IEnumerator DeathScene()
     {
         float time = 0.0f;
         Vector3 initialPos = transform.position;
@@ -183,8 +188,8 @@ public class Boss : MonoBehaviour
         while (time < _timeToStartBoss)
         {
             time += Time.deltaTime;
-            transform.position = Vector3.Lerp(initialPos, BossStartLoc, time / _timeToStartBoss);
-            SpriteObj.transform.position = new Vector3 ( initialPos.x + Mathf.Sin(Time.time * speed) * amountX, initialPos.y +Mathf.Sin(Time.time * speed)* amountY, initialPos.z);
+            transform.position = Vector3.Lerp(initialPos, _bossStartLoc, time / _timeToStartBoss);
+            _spriteObj.transform.position = new Vector3 ( initialPos.x + Mathf.Sin(Time.time * speed) * amountX, initialPos.y +Mathf.Sin(Time.time * speed)* amountY, initialPos.z);
             yield return new WaitForEndOfFrame();
         }
 
@@ -194,10 +199,10 @@ public class Boss : MonoBehaviour
 
     IEnumerator SpawnExplosionsForDeath()
     {
-        GameObject explosion = Instantiate(_explosionObj, SpriteObj.transform);
-        explosion.transform.position = new Vector3(SpriteObj.transform.position.x + Random.Range(-0.5f,0.5f),
-            SpriteObj.transform.position.y + Random.Range(-0.5f,0.5f),
-            SpriteObj.transform.position.z);
+        GameObject explosion = Instantiate(_explosionObj, _spriteObj.transform);
+        explosion.transform.position = new Vector3(_spriteObj.transform.position.x + Random.Range(-0.5f,0.5f),
+            _spriteObj.transform.position.y + Random.Range(-0.5f,0.5f),
+            _spriteObj.transform.position.z);
         explosion.transform.parent = null;
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(SpawnExplosionsForDeath());

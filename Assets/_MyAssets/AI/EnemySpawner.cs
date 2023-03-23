@@ -110,11 +110,11 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator SpawnTripleChest()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         SpawnChest();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         SpawnChest();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         SpawnChest();
     }
 }

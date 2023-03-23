@@ -2,34 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonMovement : MonoBehaviour
+public class SkeletonMovement : SimpleMove
 {
     private GameObject _player;
-    private SimpleMove _simpleMoveComp;
     private Animator _animator;
     private bool _bisJumping = false;
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>().gameObject;
-        _simpleMoveComp = GetComponent<SimpleMove>();
         _animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public override void UpdateMovement()
     {
         if(!_bisJumping)
         {
-            Vector3 target = (_player.transform.position - transform.position).normalized;
-            if(Vector3.Dot(target,_player.transform.right) > 0)
-            {
-                Debug.Log("BEHIND PLAYER");
-                _simpleMoveComp.enabled = false;
-                _bisJumping=true;
-                _animator.ResetTrigger("AttackTrigger");
-                _animator.SetTrigger("JumpTrigger");
-                _animator.SetBool("isFalling",true);
-                StartCoroutine(FollowArc(transform.position,transform.position - (Vector3.left*1.5f),0.005f,2f));
-            }
+            base.UpdateMovement();
+            HandleJumping();
+        }
+    }
+
+    void HandleJumping()
+    {
+        Vector3 target = (_player.transform.position - transform.position).normalized;
+        if(Vector3.Dot(target,_player.transform.right) > 0)
+        {
+            _bisJumping=true;
+            _animator.ResetTrigger("AttackTrigger");
+            _animator.SetTrigger("JumpTrigger");
+            _animator.SetBool("isFalling",true);
+            StartCoroutine(FollowArc(transform.position,transform.position - (Vector3.left*1.5f),0.005f,2f));
         }
     }
 
@@ -74,8 +76,7 @@ public class SkeletonMovement : MonoBehaviour
 
         transform.position = new Vector3(end.x,end.y,transform.position.z);
 
-        //jump back finish
-        _simpleMoveComp.enabled = true;
+        //jump back finish reenable regular movement & trigger not falling anymore
         _bisJumping = false;
         _animator.SetBool("isFalling",false);
     }

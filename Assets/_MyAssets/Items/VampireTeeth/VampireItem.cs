@@ -14,9 +14,14 @@ public class VampireItem : Item
     }
     private void OnDestroy()
     {
-        if(gameObject != null && GetPlayerObj() != null)
+        if(gameObject != null)
         {
-            GetPlayerObj().GetComponent<AttackComponent>().onKillCountChange -= ChanceToHeal;
+            GameObject playerObj = GetPlayerObj();
+            if(playerObj != null || playerObj.GetComponent<AttackComponent>() != null)
+            {
+                return;
+            }
+            playerObj.GetComponent<AttackComponent>().onKillCountChange -= ChanceToHeal;
         }
     }
     private void ChanceToHeal()
