@@ -122,7 +122,6 @@ public class Boss : MonoBehaviour
     }
     public virtual IEnumerator AttackPatternTwo()
     {
-        _minionSpawn = 0;
         float time = 0.0f;
         while(time < 2f)
         {
@@ -131,11 +130,11 @@ public class Boss : MonoBehaviour
             HandleBossMovement();
             yield return new WaitForEndOfFrame();
         }
-        _minionSpawn++;
+        _minionSpawn = _minionSpawn + 1;
         FireProjectile(_eyeMinion);
-
         if(_minionSpawn == 3)
         {
+            _minionSpawn = 0;
             StartCoroutine(BossBreak());
         }
         else

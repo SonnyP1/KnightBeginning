@@ -162,17 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9437dab78ac0d064f93db2ce50324ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpriteObj: {fileID: 2735422224355030013}
+  _spriteObj: {fileID: 2735422224355030013}
   _explosionObj: {fileID: 6836888543163375580, guid: cc31128ff7dc6a54d8ec0eafa4e8da81, type: 3}
   _eyeMinion: {fileID: 8163085673997821622, guid: 701a73ac67514eb46ba41c1c330d3f45, type: 3}
-  BossStartLoc: {x: 0, y: 0.8, z: 2.179}
+  _bossStartLoc: {x: 0, y: 0.8, z: 2.179}
   _timeToStartBoss: 8
   LaserAimTime: 5
   BossBreakTime: 10
   _health: 10
   _speed: 1
   _maxXPos: 3
-  isPause: 0
   _projectileSpawnPoint: {fileID: 1855783345}
   _laserProjectile: {fileID: 3676265737506442201, guid: 536de6c7396e375479b6af02624ffef5, type: 3}
 --- !u!65 &2351245340508406732
